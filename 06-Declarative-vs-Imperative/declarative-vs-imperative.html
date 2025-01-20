@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declarative vs Imperative Programming | البرمجة التصريحية مقابل الإجرائية</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات (Contents)</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة (Introduction)</a></li>
+                <li><a href="#imperative" class="nav-link">البرمجة الأمرية (Imperative Programming)</a></li>
+                <li><a href="#declarative" class="nav-link">البرمجة التصريحية (Declarative Programming)</a></li>
+                <li><a href="#comparison" class="nav-link">مقارنة بين النمطين (Comparison)</a></li>
+                <li><a href="#react-example" class="nav-link">مثال في React (React Example)</a></li>
+                <li><a href="#benefits" class="nav-link">الفوائد (Benefits)</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="intro" class="section">
+                <h1>البرمجة التصريحية مقابل الأمرية (Declarative vs Imperative Programming)</h1>
+                <div class="highlight">
+                    <p>هناك نمطان رئيسيان في البرمجة (Two main programming paradigms):</p>
+                    <ul>
+                        <li>البرمجة الأمرية (Imperative): تخبر الحاسوب كيف يفعل شيئاً (Tell computer HOW to do something)</li>
+                        <li>البرمجة التصريحية (Declarative): تخبر الحاسوب ماذا تريد (Tell computer WHAT you want)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="imperative" class="section">
+                <h2>البرمجة الأمرية (Imperative Programming)</h2>
+                <div class="process-step">
+                    <p>في البرمجة الأمرية (In Imperative Programming):</p>
+                    <ul>
+                        <li>تحدد كل خطوة بالتفصيل (Specify each step in detail)</li>
+                        <li>تتحكم في تدفق البرنامج (Control program flow)</li>
+                        <li>تدير الحالة يدوياً (Manually manage state)</li>
+                    </ul>
+                    <div class="code-example">
+                        <pre>
+// مثال للبرمجة الأمرية في JavaScript
+// Imperative JavaScript Example
+const container = document.createElement('div');
+container.className = 'greeting';
+const text = document.createTextNode('Hello from JavaScript!');
+container.appendChild(text);
+document.body.appendChild(container);</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="declarative" class="section">
+                <h2>البرمجة التصريحية (Declarative Programming)</h2>
+                <div class="highlight">
+                    <p>في البرمجة التصريحية (In Declarative Programming):</p>
+                    <ul>
+                        <li>تصف ما تريد (Describe what you want)</li>
+                        <li>تدع المنصة تهتم بالتفاصيل (Let platform handle details)</li>
+                        <li>تركز على النتيجة النهائية (Focus on end result)</li>
+                    </ul>
+                    <div class="code-example">
+                        <pre>
+// مثال للبرمجة التصريحية في React
+// Declarative React Example
+const Greeting = () => {
+    return (
+        &lt;div className="greeting"&gt;
+            Hello from React!
+        &lt;/div&gt;
+    );
+};</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="comparison" class="section">
+                <h2>مقارنة بين النمطين (Comparison)</h2>
+                <div class="process-step">
+                    <h3>البرمجة الأمرية (Imperative)</h3>
+                    <ul>
+                        <li>تحدد الخطوات (Steps)</li>
+                        <li>تدير التفاصيل (Details)</li>
+                        <li>تتحكم في التدفق (Flow)</li>
+                        <li>مثل: Pure JavaScript</li>
+                    </ul>
+
+                    <h3>البرمجة التصريحية (Declarative)</h3>
+                    <ul>
+                        <li>تحدد النتيجة (Result)</li>
+                        <li>تترك التفاصيل للمنصة (Platform handles details)</li>
+                        <li>تركز على الوصف (Description)</li>
+                        <li>مثل: React, SQL</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="react-example" class="section">
+                <h2>مثال في React (React Example)</h2>
+                <div class="highlight">
+                    <p>مثال عملي يوضح الفرق (Practical example showing the difference):</p>
+                    <div class="code-example">
+                        <pre>
+// البرمجة الأمرية (Imperative)
+let numbers = [1, 2, 3, 4, 5];
+let doubled = [];
+for(let i = 0; i < numbers.length; i++) {
+    doubled.push(numbers[i] * 2);
+}
+
+// البرمجة التصريحية (Declarative)
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(num => num * 2);</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="benefits" class="section">
+                <h2>فوائد البرمجة التصريحية (Benefits of Declarative Programming)</h2>
+                <div class="process-step">
+                    <ul>
+                        <li>كود أنظف وأسهل للقراءة (Cleaner, more readable code)</li>
+                        <li>أقل عرضة للأخطاء (Less prone to errors)</li>
+                        <li>أسهل للصيانة (Easier to maintain)</li>
+                        <li>أسهل للاختبار (Easier to test)</li>
+                        <li>إعادة استخدام أفضل للكود (Better code reusability)</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

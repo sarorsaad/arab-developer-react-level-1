@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure JavaScript vs React Virtual DOM | الفرق بين جافاسكربت و DOM الافتراضي في React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات (Contents)</h2>
+            <a href="#intro" class="nav-link">مقدمة عن الفرق (Introduction)</a>
+            <a href="#vanilla-js" class="nav-link">كيف يعمل جافاسكربت التقليدي (How Vanilla JS Works)</a>
+            <a href="#dom-updates" class="nav-link">تحديثات DOM المتكررة (DOM Updates)</a>
+            <a href="#virtual-dom-intro" class="nav-link">مفهوم DOM الافتراضي (Virtual DOM Concept)</a>
+            <a href="#react-process" class="nav-link">عملية React (React Process)</a>
+            <a href="#reconciliation" class="nav-link">عملية المطابقة (Reconciliation)</a>
+            <a href="#benefits" class="nav-link">فوائد Virtual DOM (Benefits)</a>
+            <a href="#conclusion" class="nav-link">الخلاصة (Conclusion)</a>
+        </nav>
+
+        <main class="content">
+            <section id="intro" class="section">
+                <h1>الفرق بين جافاسكربت التقليدي و DOM الافتراضي في React</h1>
+                <div class="highlight">
+                    <p>لفهم قوة React، علينا أولاً فهم الفرق بين طريقة عمل جافاسكربت التقليدي (Vanilla JavaScript) وطريقة عمل DOM الافتراضي (Virtual DOM) في React.</p>
+                </div>
+            </section>
+
+            <section id="vanilla-js" class="section">
+                <h2>كيف يعمل جافاسكربت التقليدي (How Vanilla JS Works)</h2>
+                <div class="process-step">
+                    <p>في جافاسكربت التقليدي، عند تحديث أي عنصر:</p>
+                    <ul>
+                        <li>يتم التعامل مباشرة مع DOM الحقيقي (Real DOM)</li>
+                        <li>كل تغيير يؤدي إلى إعادة حساب تخطيط الصفحة (Layout Recalculation)</li>
+                        <li>يتم إعادة رسم العناصر المتأثرة (Repainting)</li>
+                    </ul>
+                </div>
+                <div class="code-example">
+                    <pre>
+// مثال على التحديث المباشر في جافاسكربت التقليدي
+document.getElementById('title').textContent = 'عنوان جديد';
+document.getElementById('content').innerHTML = 'محتوى جديد';
+document.getElementById('button').style.backgroundColor = 'blue';</pre>
+                </div>
+            </section>
+
+            <section id="dom-updates" class="section">
+                <h2>تحديثات DOM المتكررة (DOM Updates)</h2>
+                <div class="highlight">
+                    <p>المشكلة الرئيسية مع التحديثات المباشرة للـ DOM:</p>
+                    <ul>
+                        <li>كل تحديث يتطلب إعادة حساب كاملة (Complete Recalculation)</li>
+                        <li>عمليات متكررة تؤثر على الأداء (Performance Impact)</li>
+                        <li>تحديثات متعددة تؤدي إلى بطء في الأداء (Multiple Updates Slowdown)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="virtual-dom-intro" class="section">
+                <h2>مفهوم DOM الافتراضي (Virtual DOM Concept)</h2>
+                <div class="process-step">
+                    <p>DOM الافتراضي هو:</p>
+                    <ul>
+                        <li>نسخة خفيفة من DOM الحقيقي (Lightweight Copy)</li>
+                        <li>تمثيل في الذاكرة (In-Memory Representation)</li>
+                        <li>وسيط بين الكود و DOM الحقيقي (Intermediary Layer)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="react-process" class="section">
+                <h2>عملية React (React Process)</h2>
+                <div class="comparison">
+                    <div class="comparison-card">
+                        <h3>الخطوة الأولى (First Step)</h3>
+                        <p>إنشاء نسخة من DOM الافتراضي (Creating Virtual DOM)</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h3>الخطوة الثانية (Second Step)</h3>
+                        <p>تحديث النسخة عند التغييرات (Updating Virtual DOM Copy)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reconciliation" class="section">
+                <h2>عملية المطابقة (Reconciliation)</h2>
+                <div class="highlight">
+                    <p>عملية مقارنة التغييرات:</p>
+                    <ul>
+                        <li>مقارنة النسخة القديمة مع الجديدة (Diffing Algorithm)</li>
+                        <li>تحديد التغييرات الضرورية فقط (Necessary Updates Only)</li>
+                        <li>تطبيق التحديثات بكفاءة (Efficient Updates)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="benefits" class="section">
+                <h2>فوائد Virtual DOM (Benefits)</h2>
+                <div class="process-step">
+                    <ul>
+                        <li>تحسين الأداء (Performance Optimization)</li>
+                        <li>تقليل عمليات إعادة الرسم (Reduced Repaints)</li>
+                        <li>تحديثات أكثر كفاءة (Efficient Updates)</li>
+                        <li>تجربة مستخدم أفضل (Better User Experience)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="conclusion" class="section">
+                <h2>الخلاصة (Conclusion)</h2>
+                <div class="highlight">
+                    <p>يوفر Virtual DOM في React حلاً فعالاً لمشكلة الأداء في التطبيقات التفاعلية من خلال:</p>
+                    <ul>
+                        <li>تقليل التعامل المباشر مع DOM (Reduced Direct DOM Manipulation)</li>
+                        <li>تحسين عملية تحديث واجهة المستخدم (Optimized UI Updates)</li>
+                        <li>تحسين الأداء العام للتطبيق (Enhanced Overall Performance)</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

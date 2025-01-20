@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Tutorial Level 1 | دورة React المستوى الأول</title>
+    <link rel="stylesheet" href="shared/styles.css">
+    <style>
+        /* Additional styles for home page */
+        .search-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        #search-lessons {
+            width: 100%;
+            max-width: 500px;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #search-lessons:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+        }
+
+        .lesson-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .lesson-card.active {
+            background: #e3f2fd;
+        }
+
+        .step-content {
+            margin-right: 0.5rem;
+        }
+        .step-number {
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <nav>
+                <a href="#lessons" class="nav-link">React Lessons | دروس React</a>
+            </nav>
+        </div>
+
+        <div class="content">
+            <header>
+                <h1>React Tutorial Level 1 | دورة React المستوى الأول</h1>
+                <p class="subtitle">Step by Step Guide to Master React | دليل خطوة بخطوة لإتقان React</p>
+            </header>
+
+            <div id="lessons" class="section">
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">١</div>
+                        <div class="step-content">
+                            <h3><a href="01-React%20Tutorial%20for%20Beginners-Introduction/react-intro-lesson.html">React Tutorial for Beginners - Introduction | مقدمة في React للمبتدئين</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">٢</div>
+                        <div class="step-content">
+                            <h3><a href="02-Browser%20Process%20Explained-%20DOM-%20CSSOM-%20Render%20Tree-%20JS%20Execution%20-%20Vanilla%20JS%20Drawback/browser-process-lesson.html">Browser Process Explained | شرح عملية المتصفح</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">٣</div>
+                        <div class="step-content">
+                            <h3><a href="03-%20Pure%20JavaScript%20vs%20React%20Virtual%20DOM%20الفرق%20بين%20جافاسكربت%20و%20DOM%20الافتراضي%20في%20React/pure-js-vs-virtual-dom.html">Pure JavaScript vs React Virtual DOM | الفرق بين جافاسكربت و DOM الافتراضي في React</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">٤</div>
+                        <div class="step-content">
+                            <h3><a href="04-React-Fiber/react-fiber-lesson.html">React Fiber | React Fiber مقدمة في</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">٥</div>
+                        <div class="step-content">
+                            <h3><a href="05-React-Fiber-Part2/react-fiber-advantages.html">React Fiber Part 2 | React Fiber الجزء الثاني من</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">٦</div>
+                        <div class="step-content">
+                            <h3><a href="06-Declarative-vs-Imperative/declarative-vs-imperative.html">Declarative vs Imperative Programming | البرمجة التصريحية مقابل الإجرائية</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">٧</div>
+                        <div class="step-content">
+                            <h3><a href="07-Start-React/start-react-lesson.html">Start React | البدء مع React</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">٨</div>
+                        <div class="step-content">
+                            <h3><a href="08-React-Create%20Element/create-element-lesson.html">React: Create Element | إنشاء عنصر في React</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared/navigation.js"></script>
+</body>
+</html>

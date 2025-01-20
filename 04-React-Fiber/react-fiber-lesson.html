@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Fiber | React Fiber مقدمة في</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات (Contents)</h2>
+            <a href="#intro" class="nav-link">مقدمة (Introduction)</a>
+            <a href="#old-react" class="nav-link">React قبل Fiber (React Before Fiber)</a>
+            <a href="#stack-reconciler" class="nav-link">Stack Reconciler - المقارن القديم</a>
+            <a href="#problems" class="nav-link">المشاكل القديمة (Old Problems)</a>
+            <a href="#fiber-solution" class="nav-link">حل React Fiber (Fiber Solution)</a>
+            <a href="#benefits" class="nav-link">فوائد React Fiber (Benefits)</a>
+            <a href="#example" class="nav-link">مثال توضيحي (Example)</a>
+        </nav>
+
+        <main class="content">
+            <section id="intro" class="section">
+                <h1>شرح React Fiber (React Fiber Explained)</h1>
+                <div class="highlight">
+                    <p>React Fiber هو خوارزمية جديدة للمقارنة (Reconciliation) تم إضافتها في React 16 لتحسين أداء التطبيق وتجربة المستخدم.</p>
+                </div>
+            </section>
+
+            <section id="old-react" class="section">
+                <h2>React قبل Fiber (React Before Fiber)</h2>
+                <div class="process-step">
+                    <p>قبل React Fiber، كان React يستخدم:</p>
+                    <ul>
+                        <li>عملية مزامنة (Synchronous Processing)</li>
+                        <li>تحديثات غير قابلة للمقاطعة (Non-interruptible Updates)</li>
+                        <li>تجميد واجهة المستخدم (UI Freezing)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="stack-reconciler" class="section">
+                <h2>Stack Reconciler - المقارن القديم</h2>
+                <div class="highlight">
+                    <p>كان Stack Reconciler يعمل كالتالي:</p>
+                    <ul>
+                        <li>يجمع كل التحديثات في مكدس (Stack)</li>
+                        <li>يمنع استخدام المتصفح حتى اكتمال كل التحديثات</li>
+                        <li>يعمل بشكل متزامن (Synchronously)</li>
+                    </ul>
+                </div>
+                <div class="code-example">
+                    <pre>
+// مثال على التحديثات المتزامنة القديمة
+// All updates must complete before browser responds
+updateComponent1();  // Must wait
+updateComponent2();  // Must wait
+updateComponent3();  // Must wait
+// Browser can respond only after all updates complete</pre>
+                </div>
+            </section>
+
+            <section id="problems" class="section">
+                <h2>المشاكل القديمة (Old Problems)</h2>
+                <div class="process-step">
+                    <p>المشاكل الرئيسية كانت:</p>
+                    <ul>
+                        <li>تجميد واجهة المستخدم (UI Freezing)</li>
+                        <li>عدم الاستجابة للتفاعلات (Unresponsive Interactions)</li>
+                        <li>تأخير في التحديثات المهمة (Delayed Critical Updates)</li>
+                        <li>عدم وجود أولويات للتحديثات (No Update Priorities)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="fiber-solution" class="section">
+                <h2>حل React Fiber (Fiber Solution)</h2>
+                <div class="highlight">
+                    <p>يقدم React Fiber حلاً من خلال:</p>
+                    <ul>
+                        <li>تقسيم العمل إلى وحدات صغيرة (Work Units)</li>
+                        <li>ترتيب الأولويات (Prioritization)</li>
+                        <li>القدرة على المقاطعة (Interruptible Rendering)</li>
+                        <li>تحديثات تدريجية (Incremental Updates)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="benefits" class="section">
+                <h2>فوائد React Fiber (Benefits)</h2>
+                <div class="process-step">
+                    <p>المميزات الرئيسية:</p>
+                    <ul>
+                        <li>واجهة مستخدم أكثر استجابة (More Responsive UI)</li>
+                        <li>تحديثات سلسة (Smooth Updates)</li>
+                        <li>أداء أفضل (Better Performance)</li>
+                        <li>تحكم أفضل في التحديثات (Better Update Control)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="example" class="section">
+                <h2>مثال توضيحي (Example)</h2>
+                <div class="highlight">
+                    <p>مثال على كيفية عمل React Fiber:</p>
+                    <div class="code-example">
+                        <pre>
+// React Fiber يمكنه تقسيم العمل وترتيب الأولويات
+// High Priority Updates (عالي الأولوية)
+updateUserInput();    // Executes immediately
+updateSearchResults(); // Can be interrupted
+
+// Low Priority Updates (منخفض الأولوية)
+updateAnalytics();    // Can wait
+updateBackgroundElements(); // Can wait
+
+// Browser stays responsive throughout all updates</pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

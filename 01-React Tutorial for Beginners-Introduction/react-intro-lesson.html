@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Introduction | مقدمة عن React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <a href="#introduction" class="nav-link">مقدمة عن React</a>
+            <a href="#what-is-react" class="nav-link">ما هو React؟</a>
+            <a href="#library-vs-framework" class="nav-link">الفرق بين Library و Framework</a>
+            <a href="#why-react" class="nav-link">لماذا نتعلم React؟</a>
+            <a href="#prerequisites" class="nav-link">المتطلبات الأساسية</a>
+        </nav>
+
+        <main class="content">
+            <section id="introduction" class="section">
+                <h1>React Introduction | مقدمة عن React</h1>
+                <p>السلام عليكم، اليوم سنتحدث عن React وأهميته كـ Front-end Developer ولماذا يجب عليك تعلمه.</p>
+            </section>
+
+            <section id="what-is-react" class="section">
+                <h2>ما هو React؟</h2>
+                <div class="highlight">
+                    <p>React هو عبارة عن Library (مكتبة) وليس Framework. المكتبة هي مجموعة من الأكواد الجاهزة التي كتبها مطورون آخرون لتسهيل تنفيذ مهام معينة.</p>
+                </div>
+                <p>المكتبة تساعدك على:</p>
+                <ul>
+                    <li>توفير الوقت باستخدام أكواد جاهزة</li>
+                    <li>كتابة كود نظيف وسهل القراءة (Clean Code)</li>
+                    <li>تحسين الأداء (Optimization)</li>
+                </ul>
+            </section>
+
+            <section id="library-vs-framework" class="section">
+                <h2>الفرق بين Library و Framework</h2>
+                <p>الفرق يشبه الفرق بين ركوب دراجة عادية ودراجة نارية:</p>
+                <div class="highlight">
+                    <p>عند استخدام React (Library)، أنت تتحكم في التطبيق وتستدعي المكتبة عند الحاجة. بينما مع Framework، إطار العمل هو من يتحكم في التطبيق ويحدد كيفية كتابة الكود.</p>
+                </div>
+            </section>
+
+            <section id="why-react" class="section">
+                <h2>لماذا نتعلم React؟</h2>
+                <p>React يقدم العديد من المميزات التي تجعل بناء واجهات المستخدم أسهل وأسرع:</p>
+                <ul>
+                    <li>بناء واجهات مستخدم تفاعلية بشكل أسرع</li>
+                    <li>أداء أفضل مع Virtual DOM</li>
+                    <li>إمكانية إعادة استخدام المكونات (Reusable Components)</li>
+                    <li>مجتمع كبير ودعم مستمر</li>
+                </ul>
+            </section>
+
+            <section id="prerequisites" class="section">
+                <h2>المتطلبات الأساسية</h2>
+                <div class="prerequisites">
+                    <ul>
+                        <li>HTML - معرفة أساسية بلغة HTML</li>
+                        <li>CSS - فهم أساسيات التنسيق</li>
+                        <li>JavaScript - معرفة جيدة بالمفاهيم الأساسية</li>
+                        <li>Node.js - فهم أساسي لـ Node.js</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+    <script>
+        // Highlight active section in sidebar and content
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function setActiveSection() {
+            let current = '';
+            let currentSection = null;
+            
+            // Find the current section based on scroll position
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                // Check if section is mostly visible in viewport
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    current = section.getAttribute('id');
+                    currentSection = section;
+                }
+            });
+
+            // Remove active class from all sections and links
+            sections.forEach(section => section.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Add active class only to current section and link
+            if (currentSection) {
+                currentSection.classList.add('active');
+                const activeLink = document.querySelector(`a[href="#${current}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', setActiveSection);
+        // Set initial active section
+        setActiveSection();
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Process Explained | شرح عملية المتصفح</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات (Contents)</h2>
+            <a href="#intro" class="nav-link">مقدمة (Introduction)</a>
+            <a href="#browser-process" class="nav-link">عملية المتصفح (Browser Process)</a>
+            <a href="#dom" class="nav-link">DOM - نموذج كائن المستند</a>
+            <a href="#cssom" class="nav-link">CSSOM - نموذج كائن أنماط CSS</a>
+            <a href="#render-tree" class="nav-link">شجرة العرض (Render Tree)</a>
+            <a href="#js-execution" class="nav-link">تنفيذ JavaScript</a>
+            <a href="#vanilla-drawbacks" class="nav-link">مشاكل JavaScript التقليدي</a>
+            <a href="#virtual-dom" class="nav-link">الحل: الدوم الافتراضي (Virtual DOM)</a>
+        </nav>
+
+        <main class="content">
+            <section id="intro" class="section">
+                <h1>شرح عملية المتصفح (Browser Process Explained)</h1>
+                <div class="highlight">
+                    <p>لفهم أهمية React وكيف يحسن الأداء، علينا أولاً فهم كيف يعمل المتصفح وكيف يتم عرض صفحات الويب.</p>
+                </div>
+            </section>
+
+            <section id="browser-process" class="section">
+                <h2>عملية المتصفح (Browser Process)</h2>
+                <div class="process-step">
+                    <p>عندما يقوم المتصفح بتحميل صفحة ويب، يمر بعدة مراحل:</p>
+                    <ul>
+                        <li>تحليل HTML وبناء DOM</li>
+                        <li>تحليل CSS وبناء CSSOM</li>
+                        <li>دمج DOM و CSSOM لإنشاء شجرة العرض</li>
+                        <li>تنفيذ JavaScript</li>
+                        <li>تخطيط العناصر (Layout)</li>
+                        <li>رسم الصفحة (Paint)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="dom" class="section">
+                <h2>DOM - نموذج كائن المستند</h2>
+                <div class="highlight">
+                    <p>DOM هو تمثيل برمجي لصفحة الويب على شكل شجرة من العناصر:</p>
+                    <div class="code-example">
+                        <pre>
+&lt;!-- مثال على HTML -->
+&lt;div>
+    &lt;h1>العنوان&lt;/h1>
+    &lt;p>النص&lt;/p>
+&lt;/div>
+
+// تمثيل DOM
+document
+  └── div
+       ├── h1
+       │    └── "العنوان"
+       └── p
+            └── "النص"</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cssom" class="section">
+                <h2>CSSOM - نموذج كائن أنماط CSS</h2>
+                <div class="process-step">
+                    <p>CSSOM هو تمثيل مشابه لـ DOM ولكن للأنماط:</p>
+                    <ul>
+                        <li>يحتوي على جميع معلومات التنسيق</li>
+                        <li>يتم بناؤه بشكل منفصل عن DOM</li>
+                        <li>يتضمن الأنماط المحسوبة (Computed Styles)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="render-tree" class="section">
+                <h2>شجرة العرض (Render Tree)</h2>
+                <div class="highlight">
+                    <p>شجرة العرض هي دمج بين DOM و CSSOM:</p>
+                    <ul>
+                        <li>تحتوي فقط على العناصر المرئية</li>
+                        <li>تستخدم لحساب التخطيط النهائي</li>
+                        <li>تتحدث عند تغيير DOM أو CSSOM</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="js-execution" class="section">
+                <h2>تنفيذ JavaScript</h2>
+                <div class="process-step">
+                    <p>JavaScript يمكنه:</p>
+                    <ul>
+                        <li>تعديل DOM</li>
+                        <li>تغيير الأنماط</li>
+                        <li>الاستجابة لتفاعلات المستخدم</li>
+                        <li>إجراء طلبات شبكة</li>
+                    </ul>
+                </div>
+                <div class="code-example">
+                    <pre>
+// مثال على تعديل DOM
+document.getElementById('title').textContent = 'عنوان جديد';
+document.body.style.backgroundColor = 'blue';</pre>
+                </div>
+            </section>
+
+            <section id="vanilla-drawbacks" class="section">
+                <h2>مشاكل JavaScript التقليدي</h2>
+                <div class="highlight">
+                    <p>عند استخدام JavaScript التقليدي:</p>
+                    <ul>
+                        <li>كل تعديل على DOM يؤدي إلى إعادة حساب التخطيط</li>
+                        <li>التحديثات المتكررة تؤثر على الأداء</li>
+                        <li>صعوبة إدارة حالة التطبيق (State Management)</li>
+                        <li>كود أكثر تعقيداً وصعب الصيانة</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="virtual-dom" class="section">
+                <h2>الحل: الدوم الافتراضي (Virtual DOM)</h2>
+                <div class="process-step">
+                    <p>React يقدم حلاً لهذه المشاكل من خلال Virtual DOM:</p>
+                    <ul>
+                        <li>نسخة خفيفة من DOM الحقيقي</li>
+                        <li>التغييرات تتم أولاً على Virtual DOM</li>
+                        <li>مقارنة الاختلافات وتطبيق التغييرات الضرورية فقط</li>
+                        <li>تحسين الأداء بشكل كبير</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

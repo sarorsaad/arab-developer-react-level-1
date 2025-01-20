@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-Start React: Write Your First Code & Convert Pure JS to React | استخدام React عبر CDN</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <div class="lesson-title">
+                <h1>Start React: Write Your First Code</h1>
+                <h2>البدء مع React: كتابة أول كود</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#introduction" class="nav-link">Introduction | مقدمة</a></li>
+                <li><a href="#pure-js" class="nav-link">Pure JavaScript | جافا سكريبت النقي</a></li>
+                <li><a href="#react-example" class="nav-link">React Example | مثال React</a></li>
+                <li><a href="#explanation" class="nav-link">Understanding Code | فهم الكود</a></li>
+                <li><a href="#key-differences" class="nav-link">Key Differences | الفروق الرئيسية</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="introduction">
+                <h2>Introduction | مقدمة</h2>
+                <p>In this lesson, we'll learn how to write our first React code and understand how to convert pure JavaScript code to React. We'll use CDN links to get started quickly.</p>
+                <p>في هذا الدرس، سنتعلم كيفية كتابة أول كود React وفهم كيفية تحويل كود JavaScript النقي إلى React. سنستخدم روابط CDN للبدء بسرعة.</p>
+            </section>
+
+            <section id="pure-js">
+                <h2>Pure JavaScript Example | مثال JavaScript النقي</h2>
+                <div class="code-example">
+                    <h3>Pure JavaScript Code | كود JavaScript النقي</h3>
+                    <div class="code-block">
+                        <pre dir="ltr"><code class="language-javascript">
+// Pure JavaScript Implementation
+const paragraph = document.createElement('p');
+const text = document.createTextNode('My name is Mohammed Mostafa');
+paragraph.appendChild(text);
+document.getElementById('pure-js-output').appendChild(paragraph);</code></pre>
+                    </div>
+                    <div id="pure-js-output" class="output-block"></div>
+                    <script>
+                        // Pure JavaScript Example
+                        const paragraph = document.createElement('p');
+                        const text = document.createTextNode('My name is Mohammed Mostafa');
+                        paragraph.appendChild(text);
+                        document.getElementById('pure-js-output').appendChild(paragraph);
+                    </script>
+                </div>
+            </section>
+
+            <section id="react-example">
+                <h2>React Example | مثال React</h2>
+                <div class="code-example">
+                    <h3>React Setup | إعداد React</h3>
+                    <div class="code-block">
+                        <pre dir="ltr"><code class="language-html">
+<!-- React CDN Setup -->
+&lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin>&lt;/script>
+&lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin>&lt;/script></code></pre>
+                    </div>
+                    
+                    <h3>React Code | كود React</h3>
+                    <div class="code-block">
+                        <pre dir="ltr"><code class="language-javascript">
+// React Implementation
+const p = React.createElement('p', null, 'My name is Mohammed Mostafa');
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(p);</code></pre>
+                    </div>
+                    <div id="root" class="output-block"></div>
+                    
+                    <!-- Load React -->
+                    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+                    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+                    <script>
+                        // React Example
+                        const p = React.createElement('p', null, 'My name is Mohammed Mostafa');
+                        const root = ReactDOM.createRoot(document.getElementById('root'));
+                        root.render(p);
+                    </script>
+                </div>
+            </section>
+
+            <section id="explanation">
+                <h2>Understanding the Code | فهم الكود</h2>
+                <div class="explanation">
+                    <h3>Pure JavaScript Steps | خطوات JavaScript النقي</h3>
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Create paragraph element | إنشاء عنصر الفقرة</h4>
+                                <pre><code class="language-javascript">const paragraph = document.createElement('p');</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Create text node | إنشاء عقدة النص</h4>
+                                <pre><code class="language-javascript">const text = document.createTextNode('My name is Mohammed');</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Append text to paragraph | إضافة النص إلى الفقرة</h4>
+                                <pre><code class="language-javascript">paragraph.appendChild(text);</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Append to document | إضافة إلى المستند</h4>
+                                <pre><code class="language-javascript">document.body.appendChild(paragraph);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>React Steps | خطوات React</h3>
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Create element | إنشاء العنصر</h4>
+                                <pre><code class="language-javascript">const p = React.createElement('p', null, 'My name is Mohammed');</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Create root | إنشاء العنصر الجذر</h4>
+                                <pre><code class="language-javascript">const root = ReactDOM.createRoot(document.getElementById('root'));</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Render element | عرض العنصر</h4>
+                                <pre><code class="language-javascript">root.render(p);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="key-differences">
+                <h2>Key Differences | الفروق الرئيسية</h2>
+                <ul>
+                    <li>
+                        <strong>Code Length | طول الكود</strong>
+                        <p>React requires less code for the same result | يتطلب React كودًا أقل لنفس النتيجة</p>
+                    </li>
+                    <li>
+                        <strong>Element Creation | إنشاء العناصر</strong>
+                        <p>React combines creation and content in one step | يجمع React الإنشاء والمحتوى في خطوة واحدة</p>
+                    </li>
+                    <li>
+                        <strong>DOM Updates | تحديثات DOM</strong>
+                        <p>React uses Virtual DOM for efficient updates | يستخدم React DOM افتراضي للتحديثات الفعالة</p>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

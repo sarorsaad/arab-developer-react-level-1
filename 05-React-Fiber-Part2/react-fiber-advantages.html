@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Fiber Part 2 | React Fiber الجزء الثاني من</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات (Contents)</h2>
+            <ul>
+                <li><a href="#async-rendering" class="nav-link">العرض غير المتزامن (Asynchronous Rendering)</a></li>
+                <li><a href="#work-splitting" class="nav-link">تقسيم العمل (Work Splitting)</a></li>
+                <li><a href="#priorities" class="nav-link">الأولويات (Priorities)</a></li>
+                <li><a href="#phases" class="nav-link">مراحل العمل (Work Phases)</a></li>
+                <li><a href="#scheduler" class="nav-link">المجدول (Scheduler)</a></li>
+                <li><a href="#examples" class="nav-link">أمثلة عملية (Practical Examples)</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="async-rendering" class="section">
+                <h1>مميزات React Fiber (React Fiber Advantages)</h1>
+                <div class="highlight">
+                    <h2>العرض غير المتزامن (Asynchronous Rendering)</h2>
+                    <p>
+                        يتيح React Fiber إمكانية العرض غير المتزامن (Asynchronous Rendering)، مما يعني:
+                    </p>
+                    <ul>
+                        <li>القدرة على العمل على عدة تحديثات في نفس الوقت (Process multiple updates simultaneously)</li>
+                        <li>عدم تجميد واجهة المستخدم (No UI freezing)</li>
+                        <li>استجابة أفضل للتفاعلات (Better interaction responsiveness)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="work-splitting" class="section">
+                <h2>تقسيم العمل (Work Splitting)</h2>
+                <div class="process-step">
+                    <p>يقوم React Fiber بتقسيم العمل إلى أجزاء صغيرة (chunks):</p>
+                    <ul>
+                        <li>تقسيم التحديثات الكبيرة (Split large updates)</li>
+                        <li>معالجة كل جزء بشكل مستقل (Process each chunk independently)</li>
+                        <li>تحسين الأداء العام (Improve overall performance)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="priorities" class="section">
+                <h2>نظام الأولويات (Priority System)</h2>
+                <div class="highlight">
+                    <p>يدعم React Fiber نظام أولويات للمهام (Task Priorities):</p>
+                    <ul>
+                        <li>أولوية عالية (High Priority):
+                            <ul>
+                                <li>تفاعلات المستخدم (User interactions)</li>
+                                <li>تحديثات الحالة المهمة (Critical state updates)</li>
+                            </ul>
+                        </li>
+                        <li>أولوية منخفضة (Low Priority):
+                            <ul>
+                                <li>تحديثات الخلفية (Background updates)</li>
+                                <li>طلبات البيانات (Data fetching)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="phases" class="section">
+                <h2>مراحل العمل (Work Phases)</h2>
+                <div class="process-step">
+                    <h3>1. مرحلة العرض (Render Phase)</h3>
+                    <ul>
+                        <li>قابلة للمقاطعة (Interruptible)</li>
+                        <li>بناء شجرة Fiber (Build Fiber tree)</li>
+                        <li>تحديد التغييرات (Determine changes)</li>
+                    </ul>
+
+                    <h3>2. مرحلة التنفيذ (Commit Phase)</h3>
+                    <ul>
+                        <li>غير قابلة للمقاطعة (Non-interruptible)</li>
+                        <li>تطبيق التغييرات (Apply changes)</li>
+                        <li>تحديث DOM (Update DOM)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="scheduler" class="section">
+                <h2>المجدول (Scheduler)</h2>
+                <div class="highlight">
+                    <p>يقوم المجدول في React Fiber بـ:</p>
+                    <ul>
+                        <li>تحديد أولويات المهام (Determine task priorities)</li>
+                        <li>جدولة التحديثات (Schedule updates)</li>
+                        <li>إدارة المقاطعات (Handle interruptions)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="examples" class="section">
+                <h2>أمثلة عملية (Practical Examples)</h2>
+                <div class="code-example">
+                    <pre>
+// مثال على التحديثات ذات الأولوية العالية
+// High Priority Updates Example
+const UserInput = () => {
+    const handleInput = (e) => {
+        // تحديث فوري - أولوية عالية
+        // Immediate update - high priority
+        setInputValue(e.target.value);
+    };
+    
+    return <input onChange={handleInput} />;
+};
+
+// مثال على التحديثات ذات الأولوية المنخفضة
+// Low Priority Updates Example
+const BackgroundTask = () => {
+    useEffect(() => {
+        // تحديث خلفي - أولوية منخفضة
+        // Background update - low priority
+        fetchData().then(data => {
+            setBackgroundData(data);
+        });
+    }, []);</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

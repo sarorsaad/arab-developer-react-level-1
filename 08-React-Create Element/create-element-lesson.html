@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Create Element | إنشاء عنصر في React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <nav>
+                <a href="#createElement" class="nav-link">1. createElement | إنشاء العنصر</a>
+                <a href="#createRoot" class="nav-link">2. createRoot | إنشاء الجذر</a>
+                <a href="#renderProcess" class="nav-link">3. Render Process | عملية العرض</a>
+                <a href="#liveExample" class="nav-link">4. Live Example | مثال حي</a>
+            </nav>
+        </nav>
+        <div class="content">
+            <header>
+                <h1>React: From Create Element to Render Explained | شرح عملية إنشاء العناصر في React</h1>
+                <p class="subtitle">Step-by-Step What Is Going Under The Hood | خطوة بخطوة: ما يحدث خلف الكواليس</p>
+            </header>
+
+            <div id="createElement" class="section">
+                <h2>1. React.createElement Process | عملية إنشاء العنصر</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Creating Element | إنشاء العنصر</h3>
+                            <div class="code-block">
+                                <pre dir="ltr"><code class="language-javascript">
+const element = React.createElement(
+    'p',           // type | نوع العنصر
+    null,          // props | الخصائص
+    'Hello World'  // children | المحتوى
+);</code></pre>
+                            </div>
+                            <div class="explanation">
+                                <h4>JavaScript Object Representation | التمثيل ككائن JavaScript</h4>
+                                <div class="code-block">
+                                    <pre dir="ltr"><code class="language-javascript">
+{
+    type: 'p',
+    props: null,
+    children: ['Hello World']
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="createRoot" class="section">
+                <h2>2. Creating Root | إنشاء الجذر</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>ReactDOM.createRoot | إنشاء نقطة الاتصال</h3>
+                            <div class="code-block">
+                                <pre dir="ltr"><code class="language-javascript">
+const root = ReactDOM.createRoot(
+    document.getElementById('root')
+);</code></pre>
+                            </div>
+                            <div class="explanation">
+                                <h4>Fiber Root Creation | إنشاء جذر Fiber</h4>
+                                <ul>
+                                    <li>Creates connection point between Virtual DOM and Real DOM</li>
+                                    <li>ينشئ نقطة اتصال بين DOM الافتراضي و DOM الحقيقي</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="renderProcess" class="section">
+                <h2>3. Render Process | عملية العرض</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>root.render() | عملية العرض</h3>
+                            <div class="code-block">
+                                <pre dir="ltr"><code class="language-javascript">
+root.render(element);</code></pre>
+                            </div>
+                            <div class="explanation">
+                                <h4>Render Phases | مراحل العرض:</h4>
+                                <div class="comparison">
+                                    <div class="comparison-card">
+                                        <h5>Reconciliation Phase | مرحلة المطابقة</h5>
+                                        <ul>
+                                            <li>Compares Virtual DOMs | يقارن بين DOM الافتراضي القديم والجديد</li>
+                                            <li>Identifies changes | يحدد التغييرات</li>
+                                        </ul>
+                                    </div>
+                                    <div class="comparison-card">
+                                        <h5>Commit Phase | مرحلة التنفيذ</h5>
+                                        <ul>
+                                            <li>Updates Real DOM | يحدث DOM الحقيقي</li>
+                                            <li>Applies changes | يطبق التغييرات</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="liveExample" class="section">
+                <h2>4. Live Example | مثال حي</h2>
+                <div class="demo-section">
+                    <div class="code-and-demo">
+                        <div class="code-part">
+                            <h3>Code | الكود</h3>
+                            <div class="code-block">
+                                <pre dir="ltr"><code class="language-javascript">
+// Step 1: Create element
+//
+const element = React.createElement('div', {
+    className: 'demo-element',
+    style: {
+        padding: '1rem',
+        backgroundColor: '#f0f0f0',
+        borderRadius: '8px',
+        margin: '1rem 0',
+        textAlign: 'center'
+    }
+}, 'Hello from React!);
+
+// Step 2: Create root
+
+const root = ReactDOM.createRoot(
+    document.getElementById('demo-root')
+);
+
+// Step 3: Render
+//
+root.render(element);</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-part">
+                            <h3>Result | النتيجة</h3>
+                            <div id="demo-root" class="demo-output"></div>
+                        </div>
+                    </div>
+
+                    <div class="demo-explanation">
+                        <h4>What's Happening? | ماذا يحدث؟</h4>
+                        <ol>
+                            <li>
+                                <strong>createElement:</strong>
+                                <p>Creates a React element with specified properties | ينشئ عنصر React بالخصائص المحددة</p>
+                            </li>
+                            <li>
+                                <strong>createRoot:</strong>
+                                <p>Establishes connection with DOM | يؤسس الاتصال مع DOM</p>
+                            </li>
+                            <li>
+                                <strong>render:</strong>
+                                <p>Displays the element in browser | يعرض العنصر في المتصفح</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- React Scripts -->
+                <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+                <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+                <script>
+                    // Create element with styles
+                    const element = React.createElement('div', {
+                        className: 'demo-element',
+                        style: {
+                            padding: '1rem',
+                            backgroundColor: '#f0f0f0',
+                            borderRadius: '8px',
+                            margin: '1rem 0',
+                            textAlign: 'center'
+                        }
+                    }, 'Hello from React! | اهلا بك');
+
+                    // Create root and render
+                    const root = ReactDOM.createRoot(document.getElementById('demo-root'));
+                    root.render(element);
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>
