@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Code to JSX: Practical Example | تحويل كود React إلى JSX</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link" style="background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; text-align: center; margin-bottom: 20px; width: 100%; box-sizing: border-box;">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <a href="#introduction" class="nav-link">مقدمة</a>
+            <a href="#react-createElement" class="nav-link">React.createElement</a>
+            <a href="#jsx-syntax" class="nav-link">JSX Syntax</a>
+            <a href="#practical-example" class="nav-link">مثال عملي</a>
+            <a href="#babel-compilation" class="nav-link">Babel Compilation</a>
+        </nav>
+
+        <main class="content">
+            <section id="introduction" class="section">
+                <h1>React Code to JSX: Practical Example | تحويل كود React إلى JSX</h1>
+                <div class="highlight">
+                    <p>
+                        في هذا الدرس سنتعلم كيفية تحويل كود React التقليدي إلى JSX مع مثال عملي.
+                        <br>
+                        In this lesson, we'll learn how to convert traditional React code to JSX with a practical example.
+                    </p>
+                </div>
+            </section>
+
+            <section id="react-createElement" class="section">
+                <h2>React.createElement | الطريقة التقليدية</h2>
+                <div class="highlight">
+                    <p>
+                        الطريقة التقليدية باستخدام React.createElement:
+                        <br>
+                        Traditional way using React.createElement:
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// Traditional React Code
+const element = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'الوقت الحالي: ' + new Date().toLocaleTimeString()
+    )
+);</code></pre>
+                </div>
+            </section>
+
+            <section id="jsx-syntax" class="section">
+                <h2>JSX Syntax | صيغة JSX</h2>
+                <div class="highlight">
+                    <p>
+                        نفس الكود باستخدام JSX (أسهل في القراءة والكتابة):
+                        <br>
+                        Same code using JSX (easier to read and write):
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// JSX Code
+const element = (
+    &lt;div&gt;
+        &lt;h1&gt;
+            الوقت الحالي: {new Date().toLocaleTimeString()}
+        &lt;/h1&gt;
+    &lt;/div&gt;
+);</code></pre>
+                </div>
+            </section>
+
+            <section id="practical-example" class="section">
+                <h2>مثال عملي | Practical Example</h2>
+                <div class="highlight">
+                    <p>
+                        لنقارن المثالين بشكل كامل:
+                        <br>
+                        Let's compare both examples in full:
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// React Traditional Code
+const root = ReactDOM.createRoot(
+    document.getElementById('root')
+);
+
+function tickWithReact() {
+    const element = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'الوقت الحالي: ' + new Date().toLocaleTimeString()
+        )
+    );
+    root.render(element);
+}
+
+setInterval(tickWithReact, 1000);
+
+// JSX Version
+const root = ReactDOM.createRoot(
+    document.getElementById('root')
+);
+
+function tickWithJSX() {
+    const element = (
+        &lt;div&gt;
+            &lt;h1&gt;
+                الوقت الحالي: {new Date().toLocaleTimeString()}
+            &lt;/h1&gt;
+        &lt;/div&gt;
+    );
+    root.render(element);
+}
+
+setInterval(tickWithJSX, 1000);</code></pre>
+                </div>
+            </section>
+
+            <section id="babel-compilation" class="section">
+                <h2>Babel Compilation | ترجمة Babel</h2>
+                <div class="highlight">
+                    <p>
+                        لاستخدام JSX، نحتاج إلى Babel لترجمة الكود:
+                        <br>
+                        To use JSX, we need Babel to compile the code:
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>&lt;!-- Add React and ReactDOM --&gt;
+&lt;script src="https://unpkg.com/react@18/umd/react.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"&gt;&lt;/script&gt;
+
+&lt;!-- Add Babel for JSX support --&gt;
+&lt;script src="https://unpkg.com/babel-standalone@6/babel.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Your JSX Script --&gt;
+&lt;script type="text/babel"&gt;
+    // Your JSX code here
+&lt;/script&gt;</code></pre>
+                </div>
+                <div class="note">
+                    <p>
+                        ملاحظة: يجب إضافة type="text/babel" للسكريبت الذي يحتوي على JSX.
+                        <br>
+                        Note: Add type="text/babel" to scripts containing JSX.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

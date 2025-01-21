@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Props & State: Create Dynamic UIs Part 1 | مقدمة عن Props و State في React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن الدرس</a></li>
+                <li><a href="#reusability-problem" class="nav-link">مشكلة إعادة الاستخدام</a></li>
+                <li><a href="#project-example" class="nav-link">مثال المشاريع Portfolio</a></li>
+                <li><a href="#current-approach" class="nav-link">الطريقة الحالية</a></li>
+                <li><a href="#better-approach" class="nav-link">الطريقة الأفضل</a></li>
+                <li><a href="#props-intro" class="nav-link">مقدمة عن Props</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h1 class="lesson-title">Introduction to Props & State: Create Dynamic UIs Part 1</h1>
+            <h1 class="lesson-title">مقدمة عن Props و State في React</h1>
+
+            <section id="intro" class="section">
+                <div class="highlight">
+                    <p>بسم الله الرحمن الرحيم</p>
+                    <p>في هذا الدرس سنتعرف على مفهومين أساسيين في React وهما Props و State، وكيف نستخدمهما لإنشاء واجهات مستخدم ديناميكية.</p>
+                    <p>In this lesson, we'll learn about two fundamental concepts in React: Props and State, and how to use them to create dynamic user interfaces.</p>
+                </div>
+            </section>
+
+            <section id="reusability-problem" class="section">
+                <h2>مشكلة إعادة الاستخدام | Reusability Problem</h2>
+                <div class="highlight">
+                    <p>لنفهم المشكلة من خلال مثال بسيط:</p>
+                    <p>Let's understand the problem through a simple example:</p>
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl"># طريقة غير صحيحة - إنشاء دالة لكل اسم</div>
+                            <div class="code-line">
+                                <span class="keyword">function</span> <span class="function">printName1</span>() {
+                                    <span class="builtin">console</span>.<span class="function">log</span>(<span class="string">"محمد"</span>);
+                                }
+                            </div>
+                            <div class="code-line">
+                                <span class="keyword">function</span> <span class="function">printName2</span>() {
+                                    <span class="builtin">console</span>.<span class="function">log</span>(<span class="string">"أحمد"</span>);
+                                }
+                            </div>
+                            <div class="code-line">
+                                <span class="keyword">function</span> <span class="function">printName3</span>() {
+                                    <span class="builtin">console</span>.<span class="function">log</span>(<span class="string">"علي"</span>);
+                                }
+                            </div>
+
+                            <div class="code-comment" dir="rtl"># الطريقة الصحيحة - دالة واحدة تقبل الاسم كمعامل</div>
+                            <div class="code-line">
+                                <span class="keyword">function</span> <span class="function">printName</span>(<span class="parameter">name</span>) {
+                                    <span class="builtin">console</span>.<span class="function">log</span>(<span class="parameter">name</span>);
+                                }
+                            </div>
+
+                            <div class="code-comment" dir="rtl"># استخدام الدالة</div>
+                            <div class="code-line">
+                                <span class="function">printName</span>(<span class="string">"محمد"</span>);
+                                <span class="function">printName</span>(<span class="string">"أحمد"</span>);
+                                <span class="function">printName</span>(<span class="string">"علي"</span>);
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="project-example" class="section">
+                <h2>مثال المشاريع Portfolio | Portfolio Example</h2>
+                <div class="highlight">
+                    <p>لنطبق نفس المفهوم على مكونات React:</p>
+                    <p>Let's apply the same concept to React components:</p>
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl"># الطريقة غير المثالية - إنشاء مكون لكل مشروع</div>
+                            <div class="code-line">
+                                <span class="keyword">class</span> <span class="class-name">Project1</span> <span class="keyword">extends</span> <span class="class-name">React.Component</span> {
+                                    <span class="function">render</span>() {
+                                        <span class="keyword">return</span> (
+                                            <span class="jsx-tag">&lt;section></span>
+                                                <span class="jsx-tag">&lt;h1></span>Admin Dashboard<span class="jsx-tag">&lt;/h1></span>
+                                                <span class="jsx-tag">&lt;p></span>A powerful admin dashboard...<span class="jsx-tag">&lt;/p></span>
+                                                <span class="jsx-tag">&lt;div></span>
+                                                    <span class="jsx-tag">&lt;span></span>React<span class="jsx-tag">&lt;/span></span>
+                                                    <span class="jsx-tag">&lt;span></span>Node.js<span class="jsx-tag">&lt;/span></span>
+                                                    <span class="jsx-tag">&lt;span></span>MongoDB<span class="jsx-tag">&lt;/span></span>
+                                                <span class="jsx-tag">&lt;/div></span>
+                                            <span class="jsx-tag">&lt;/section></span>
+                                        );
+                                    }
+                                }
+                            </div>
+
+                            <div class="code-line">
+                                <span class="keyword">class</span> <span class="class-name">Project2</span> <span class="keyword">extends</span> <span class="class-name">React.Component</span> {
+                                    <span class="function">render</span>() {
+                                        <span class="keyword">return</span> (
+                                            <span class="jsx-tag">&lt;section></span>
+                                                <span class="jsx-tag">&lt;h1></span>E-commerce Website<span class="jsx-tag">&lt;/h1></span>
+                                                <span class="jsx-tag">&lt;p></span>An online store...<span class="jsx-tag">&lt;/p></span>
+                                                <span class="jsx-tag">&lt;div></span>
+                                                    <span class="jsx-tag">&lt;span></span>React<span class="jsx-tag">&lt;/span></span>
+                                                    <span class="jsx-tag">&lt;span></span>Express<span class="jsx-tag">&lt;/span></span>
+                                                    <span class="jsx-tag">&lt;span></span>MySQL<span class="jsx-tag">&lt;/span></span>
+                                                <span class="jsx-tag">&lt;/div></span>
+                                            <span class="jsx-tag">&lt;/section></span>
+                                        );
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="better-approach" class="section">
+                <h2>الطريقة الأفضل | Better Approach</h2>
+                <div class="highlight">
+                    <p>بدلاً من إنشاء مكون لكل مشروع، نقوم بإنشاء مكون واحد يقبل البيانات كـ props:</p>
+                    <p>Instead of creating a component for each project, we create one component that accepts data as props:</p>
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl"># مكون واحد قابل لإعادة الاستخدام</div>
+                            <div class="code-line">
+                                <span class="keyword">class</span> <span class="class-name">Project</span> <span class="keyword">extends</span> <span class="class-name">React.Component</span> {
+                                    <span class="function">render</span>() {
+                                        <span class="keyword">return</span> (
+                                            <span class="jsx-tag">&lt;section></span>
+                                                <span class="jsx-tag">&lt;h1></span>{<span class="property">this.props.title</span>}<span class="jsx-tag">&lt;/h1></span>
+                                                <span class="jsx-tag">&lt;p></span>{<span class="property">this.props.description</span>}<span class="jsx-tag">&lt;/p></span>
+                                                <span class="jsx-tag">&lt;div></span>
+                                                    {<span class="property">this.props.technologies</span>.map(tech => (
+                                                        <span class="jsx-tag">&lt;span></span>{tech}<span class="jsx-tag">&lt;/span></span>
+                                                    ))}
+                                                <span class="jsx-tag">&lt;/div></span>
+                                            <span class="jsx-tag">&lt;/section></span>
+                                        );
+                                    }
+                                }
+                            </div>
+
+                            <div class="code-comment" dir="rtl"># استخدام المكون</div>
+                            <div class="code-line">
+                                <span class="jsx-tag">&lt;Project</span>
+                                    <span class="prop-name">title</span>=<span class="string">"Admin Dashboard"</span>
+                                    <span class="prop-name">description</span>=<span class="string">"A powerful admin dashboard..."</span>
+                                    <span class="prop-name">technologies</span>={[<span class="string">"React"</span>, <span class="string">"Node.js"</span>, <span class="string">"MongoDB"</span>]}
+                                <span class="jsx-tag">/></span>
+
+                                <span class="jsx-tag">&lt;Project</span>
+                                    <span class="prop-name">title</span>=<span class="string">"E-commerce Website"</span>
+                                    <span class="prop-name">description</span>=<span class="string">"An online store..."</span>
+                                    <span class="prop-name">technologies</span>={[<span class="string">"React"</span>, <span class="string">"Express"</span>, <span class="string">"MySQL"</span>]}
+                                <span class="jsx-tag">/></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="props-intro" class="section">
+                <h2>مقدمة عن Props | Introduction to Props</h2>
+                <div class="highlight">
+                    <p>الـ Props هي طريقة لتمرير البيانات من المكون الأب إلى المكون الابن:</p>
+                    <p>Props are a way to pass data from parent component to child component:</p>
+                    <ul>
+                        <li>
+                            Props هي اختصار لـ Properties
+                            <br>
+                            Props is short for Properties
+                        </li>
+                        <li>
+                            Props هي للقراءة فقط (Read-only)
+                            <br>
+                            Props are read-only
+                        </li>
+                        <li>
+                            تساعد في جعل المكونات قابلة لإعادة الاستخدام
+                            <br>
+                            Help make components reusable
+                        </li>
+                        <li>
+                            تمرر من المكون الأب إلى المكون الابن
+                            <br>
+                            Passed from parent to child component
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>ملخص الدرس | Lesson Summary</h2>
+                <div class="highlight">
+                    <p>في هذا الدرس تعلمنا:</p>
+                    <p>In this lesson we learned:</p>
+                    <ul>
+                        <li>
+                            مفهوم إعادة استخدام المكونات
+                            <br>
+                            Component reusability concept
+                        </li>
+                        <li>
+                            مشكلة تكرار الكود وكيفية حلها
+                            <br>
+                            Code duplication problem and how to solve it
+                        </li>
+                        <li>
+                            مقدمة عن Props وكيفية استخدامها
+                            <br>
+                            Introduction to Props and how to use them
+                        </li>
+                        <li>
+                            كيفية جعل المكونات ديناميكية
+                            <br>
+                            How to make components dynamic
+                        </li>
+                    </ul>
+                    <div class="note">
+                        <p>في الدرس القادم سنتعمق أكثر في مفهوم State وكيفية استخدامه مع Props لإنشاء تطبيقات تفاعلية.</p>
+                        <p>In the next lesson, we'll dive deeper into the concept of State and how to use it with Props to create interactive applications.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

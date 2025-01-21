@@ -120,27 +120,76 @@ h1, h2 {
 }
 
 .code-block {
-    margin: 1rem 0;
-    background: #2d2d2d;
+    background-color: #1e1e1e;
     border-radius: 6px;
-    overflow: hidden;
-}
-
-.code-block pre {
-    margin: 0;
-    padding: 1.5rem;
+    padding: 20px;
+    margin: 15px 0;
     overflow-x: auto;
-    direction: ltr;
-    text-align: left;
+    font-family: 'Consolas', 'Courier New', monospace;
+    line-height: 1.6;
+    font-size: 14px;
 }
 
-.code-block code {
-    font-family: 'Consolas', monospace;
-    font-size: 0.95rem;
-    color: #e0e0e0;
-    direction: ltr;
-    text-align: left;
-    display: block;
+.code-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.code-comment {
+    color: #6a9955;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    padding: 8px 0;
+    font-size: 1em;
+    margin: 4px 0;
+}
+
+.code-comment[dir="rtl"] {
+    text-align: right;
+}
+
+.code-line {
+    color: #d4d4d4;
+    padding: 2px 0;
+    white-space: pre;
+    padding-left: 20px;
+}
+
+.jsx-tag {
+    color: #808080;
+}
+
+.prop-name {
+    color: #9cdcfe;
+}
+
+.property {
+    color: #9cdcfe;
+}
+
+.class-name {
+    color: #4ec9b0;
+}
+
+.keyword {
+    color: #569cd6;
+    font-weight: bold;
+}
+
+.function {
+    color: #dcdcaa;
+}
+
+.string {
+    color: #ce9178;
+}
+
+.parameter {
+    color: #9cdcfe;
+}
+
+.builtin {
+    color: #4ec9b0;
 }
 
 .output-block {

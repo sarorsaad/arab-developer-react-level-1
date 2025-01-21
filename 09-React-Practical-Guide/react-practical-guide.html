@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Practical Guide | الدليل العملي لـ React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-link {
+            display: block;
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            background-color: #1976d2;
+        }
+        .code-block {
+            direction: ltr;
+            text-align: left;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        .code-block .comment {
+            color: #6a9955;
+        }
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .highlight {
+            background-color: #fff3e0;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#introduction" class="nav-link">مقدمة (Introduction)</a></li>
+                <li><a href="#creating-elements" class="nav-link">إنشاء العناصر (Creating Elements)</a></li>
+                <li><a href="#behind-scenes" class="nav-link">ما يحدث خلف الكواليس (Behind the Scenes)</a></li>
+                <li><a href="#practical-example" class="nav-link">مثال عملي (Practical Example)</a></li>
+                <li><a href="#fiber-tree" class="nav-link">شجرة Fiber (Fiber Tree)</a></li>
+                <li><a href="#render-phases" class="nav-link">مراحل العرض (Render Phases)</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="introduction" class="section">
+                <h1>React Practical Guide: Creating Elements & Behind-the-Scenes Process</h1>
+                <h2>الدليل العملي لـ React: إنشاء العناصر والعمليات خلف الكواليس</h2>
+                <div class="highlight">
+                    <p>في هذا الدرس، سنتعلم كيفية إنشاء عناصر React بشكل عملي، وفهم ما يحدث خلف الكواليس عند كتابة كود React.</p>
+                </div>
+            </section>
+
+            <section id="creating-elements" class="section">
+                <h2>إنشاء العناصر (Creating Elements)</h2>
+                <div class="code-block">
+<pre><code><span class="comment">// Creating an H1 element</span>
+<span class="keyword">const</span> heading = <span class="function">React.createElement</span>(
+    <span class="string">'h1'</span>,
+    <span class="keyword">null</span>,
+    <span class="string">'Hello and Welcome'</span>
+);
+
+<span class="comment">// Creating a paragraph element</span>
+<span class="keyword">const</span> paragraph = <span class="function">React.createElement</span>(
+    <span class="string">'p'</span>,
+    <span class="keyword">null</span>,
+    <span class="string">'محمد مصطفى'</span>
+);
+
+<span class="comment">// Creating a parent div</span>
+<span class="keyword">const</span> parentDiv = <span class="function">React.createElement</span>(
+    <span class="string">'div'</span>,
+    <span class="keyword">null</span>,
+    [heading, paragraph]
+);</code></pre>
+                </div>
+                <div class="highlight">
+                    <p>شرح الكود:</p>
+                    <ul>
+                        <li>إنشاء عنصر H1 باستخدام React.createElement</li>
+                        <li>إنشاء عنصر paragraph للنص العربي</li>
+                        <li>إنشاء div رئيسي يحتوي على العناصر السابقة</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="behind-scenes" class="section">
+                <h2>ما يحدث خلف الكواليس (Behind the Scenes)</h2>
+                <p>عند إنشاء عناصر React، تتم العملية على عدة مراحل:</p>
+                <ol>
+                    <li>تحويل كل عنصر إلى كائن JavaScript (JavaScript Object)</li>
+                    <li>إنشاء عقد Fiber (Fiber Nodes)</li>
+                    <li>ربط العقد في شجرة Fiber (Fiber Tree)</li>
+                    <li>إنشاء جذر React (React Root)</li>
+                </ol>
+            </section>
+
+            <section id="practical-example" class="section">
+                <h2>مثال عملي (Practical Example)</h2>
+                <div class="code-block">
+                    <pre><code>// Create Root
+const root = ReactDOM.createRoot(
+    document.getElementById('root')
+);
+
+// Render the content
+root.render(parentDiv);</code></pre>
+                </div>
+            </section>
+
+            <section id="fiber-tree" class="section">
+                <h2>شجرة Fiber (Fiber Tree)</h2>
+                <div class="highlight">
+                    <p>شجرة Fiber هي تمثيل داخلي للـ Virtual DOM، حيث:</p>
+                    <ul>
+                        <li>كل عنصر يمثل عقدة (Node)</li>
+                        <li>العقد مرتبطة ببعضها البعض</li>
+                        <li>تحتوي على معلومات عن العناصر وعلاقاتها</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="render-phases" class="section">
+                <h2>مراحل العرض (Render Phases)</h2>
+                <div class="highlight">
+                    <h3>1. مرحلة العرض (Render Phase)</h3>
+                    <p>في هذه المرحلة، يتم:</p>
+                    <ul>
+                        <li>مقارنة Virtual DOM القديم والجديد</li>
+                        <li>تطبيق خوارزمية Diffing</li>
+                        <li>تحديد التغييرات المطلوبة</li>
+                    </ul>
+
+                    <h3>2. مرحلة التنفيذ (Commit Phase)</h3>
+                    <p>في هذه المرحلة، يتم:</p>
+                    <ul>
+                        <li>تطبيق التغييرات على DOM الحقيقي</li>
+                        <li>تحديث واجهة المستخدم</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

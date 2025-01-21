@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding JSX and Babel | فهم JSX و Babel</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link" style="background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; text-align: center; margin-bottom: 20px; width: 100%; box-sizing: border-box;">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <a href="#introduction" class="nav-link">مقدمة</a>
+            <a href="#what-is-jsx" class="nav-link">ما هو JSX؟</a>
+            <a href="#jsx-to-js" class="nav-link">تحويل JSX إلى JavaScript</a>
+            <a href="#babel-process" class="nav-link">عملية التحويل في Babel</a>
+            <a href="#jsx-benefits" class="nav-link">مميزات JSX</a>
+            <a href="#practical-example" class="nav-link">مثال عملي</a>
+        </nav>
+
+        <main class="content">
+            <section id="introduction" class="section">
+                <h1>Understanding JSX and Babel | فهم JSX و Babel</h1>
+                <p>
+                    في هذا الدرس سنتعلم عن JSX وكيف يتم تحويله إلى JavaScript باستخدام Babel. سنفهم لماذا نستخدم JSX وما هي مميزاته.
+                    <br>
+                    In this lesson, we'll learn about JSX and how it gets transformed into JavaScript using Babel. We'll understand why we use JSX and its benefits.
+                </p>
+            </section>
+
+            <section id="what-is-jsx" class="section">
+                <h2>ما هو JSX؟ | What is JSX?</h2>
+                <div class="highlight">
+                    <p>
+                        JSX هو امتداد لـ JavaScript يسمح لنا بكتابة HTML داخل ملفات JavaScript. المصطلح JSX يعني JavaScript XML.
+                        <br>
+                        JSX is a JavaScript extension that allows us to write HTML inside JavaScript files. The term JSX stands for JavaScript XML.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// JSX Syntax
+const element = (
+    &lt;div&gt;
+        &lt;h1&gt;Hello World&lt;/h1&gt;
+        &lt;p&gt;مرحباً بكم&lt;/p&gt;
+    &lt;/div&gt;
+);</code></pre>
+                </div>
+            </section>
+
+            <section id="jsx-to-js" class="section">
+                <h2>تحويل JSX إلى JavaScript | JSX to JavaScript Transformation</h2>
+                <div class="highlight">
+                    <p>
+                        المتصفح لا يفهم JSX مباشرة. يتم استخدام Babel لتحويل كود JSX إلى JavaScript عادي.
+                        <br>
+                        Browsers don't understand JSX directly. Babel is used to transform JSX code into regular JavaScript.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// Before Babel (JSX)
+const element = (
+    &lt;div&gt;
+        &lt;h1&gt;Hello&lt;/h1&gt;
+        &lt;p&gt;Welcome&lt;/p&gt;
+    &lt;/div&gt;
+);
+
+// After Babel (React 17+)
+import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime';
+
+const element = _jsxs("div", {
+    children: [
+        _jsx("h1", { children: "Hello" }),
+        _jsx("p", { children: "Welcome" })
+    ]
+});</code></pre>
+                </div>
+            </section>
+
+            <section id="babel-process" class="section">
+                <h2>عملية التحويل في Babel | Babel Transformation Process</h2>
+                <div class="highlight">
+                    <p>
+                        يمر كود JSX بعدة مراحل في Babel:
+                        <br>
+                        JSX code goes through several stages in Babel:
+                    </p>
+                </div>
+                <ol>
+                    <li>
+                        تحليل الكود (Parsing)
+                        <br>
+                        Code Parsing
+                    </li>
+                    <li>
+                        تحويل JSX إلى وظائف React (Transform)
+                        <br>
+                        Transforming JSX to React Functions
+                    </li>
+                    <li>
+                        توليد الكود النهائي (Code Generation)
+                        <br>
+                        Final Code Generation
+                    </li>
+                </ol>
+            </section>
+
+            <section id="jsx-benefits" class="section">
+                <h2>مميزات JSX | Benefits of JSX</h2>
+                <div class="highlight">
+                    <ul>
+                        <li>
+                            سهولة القراءة والكتابة
+                            <br>
+                            Easy to read and write
+                        </li>
+                        <li>
+                            يمكن استخدام JavaScript expressions داخل JSX
+                            <br>
+                            Can use JavaScript expressions inside JSX
+                        </li>
+                        <li>
+                            أداء أفضل في React 17+
+                            <br>
+                            Better performance in React 17+
+                        </li>
+                        <li>
+                            لا يحتاج إلى import React في كل ملف
+                            <br>
+                            No need to import React in every file
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practical-example" class="section">
+                <h2>مثال عملي | Practical Example</h2>
+                <div class="highlight">
+                    <p>
+                        مثال على استخدام التعبيرات JavaScript داخل JSX:
+                        <br>
+                        Example of using JavaScript expressions inside JSX:
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// Using JSX with JavaScript Expressions
+const name = "محمد";
+const greeting = (
+    &lt;div className="greeting"&gt;
+        &lt;h1&gt;Hello, {name}!&lt;/h1&gt;
+        &lt;p&gt;Current time: {new Date().toLocaleTimeString()}&lt;/p&gt;
+    &lt;/div&gt;
+);</code></pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+    <script>
+        function setActiveSection() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveSection);
+        setActiveSection();
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بناء موقع بدون React Components | Building a Website Without React Components</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .lesson-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2196F3;
+            font-size: 2rem;
+            padding: 1rem;
+            border-bottom: 2px solid #2196F3;
+        }
+        .code-block {
+            display: flex;
+            background-color: #1e1e1e;
+            border-radius: 6px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .code-arabic {
+            flex: 1;
+            padding: 1rem;
+            border-right: 1px solid #444;
+            direction: rtl;
+            text-align: right;
+            color: #d4d4d4;
+        }
+        .code-english {
+            flex: 1;
+            padding: 1rem;
+            color: #d4d4d4;
+        }
+        .command-line {
+            display: flex;
+            margin-bottom: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .command-line.arabic {
+            justify-content: flex-end;
+        }
+        .command-line.arabic-command {
+            direction: ltr;
+            text-align: left;
+        }
+        .command-line:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن المثال العملي</a></li>
+                <li><a href="#project-setup" class="nav-link">إعداد المشروع</a></li>
+                <li><a href="#without-components" class="nav-link">بناء الموقع بدون Components</a></li>
+                <li><a href="#website-structure" class="nav-link">هيكل الموقع</a></li>
+                <li><a href="#code-implementation" class="nav-link">تنفيذ الكود</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h1 class="lesson-title">بناء موقع بدون Components</h1>
+            
+            <section id="intro" class="section">
+                <div class="highlight">
+                    <p>بسم الله الرحمن الرحيم</p>
+                    <p>في هذا الدرس سنقوم ببناء موقع بسيط بدون استخدام Components، ثم في الدرس القادم سنقوم بإعادة كتابته باستخدام Components لنرى الفرق بين الطريقتين.</p>
+                    <p>In this lesson, we'll build a simple website without using Components, then in the next lesson, we'll refactor it using Components to see the difference between both approaches.</p>
+                </div>
+            </section>
+
+            <section id="project-setup" class="section">
+                <h2>إعداد المشروع | Project Setup</h2>
+                <div class="highlight">
+                    <p>نبدأ بإنشاء مشروع React جديد باستخدام Vite:</p>
+                    <p>We start by creating a new React project using Vite:</p>
+                    <div class="code-block">
+                        <div class="code-arabic">
+                            <div class="command-line arabic"># إنشاء مشروع جديد</div>
+                            <div class="command-line arabic-command">npm create vite@latest my-app</div>
+                            <br>
+                            <div class="command-line arabic"># الدخول إلى مجلد المشروع</div>
+                            <div class="command-line arabic-command">cd my-app</div>
+                            <br>
+                            <div class="command-line arabic"># تثبيت المكتبات</div>
+                            <div class="command-line arabic-command">npm install</div>
+                            <br>
+                            <div class="command-line arabic"># تشغيل المشروع</div>
+                            <div class="command-line arabic-command">npm run dev</div>
+                        </div>
+                        <div class="code-english">
+                            <div class="command-line"># Create new project</div>
+                            <div class="command-line">npm create vite@latest my-app</div>
+                            <br>
+                            <div class="command-line"># Enter project directory</div>
+                            <div class="command-line">cd my-app</div>
+                            <br>
+                            <div class="command-line"># Install dependencies</div>
+                            <div class="command-line">npm install</div>
+                            <br>
+                            <div class="command-line"># Run the project</div>
+                            <div class="command-line">npm run dev</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="website-structure" class="section">
+                <h2>هيكل الموقع | Website Structure</h2>
+                <div class="highlight">
+                    <p>موقعنا يتكون من 4 أجزاء رئيسية:</p>
+                    <p>Our website consists of 4 main parts:</p>
+                    <ul>
+                        <li>
+                            <strong>Header (الهيدر)</strong>
+                            <br>
+                            الجزء العلوي من الموقع
+                            <br>
+                            The top section of the website
+                        </li>
+                        <li>
+                            <strong>Main Content (المحتوى الرئيسي)</strong>
+                            <br>
+                            منطقة المحتوى الرئيسية
+                            <br>
+                            The main content area
+                        </li>
+                        <li>
+                            <strong>Sidebar (الشريط الجانبي)</strong>
+                            <br>
+                            قائمة جانبية للتنقل
+                            <br>
+                            Navigation sidebar
+                        </li>
+                        <li>
+                            <strong>Footer (الفوتر)</strong>
+                            <br>
+                            الجزء السفلي من الموقع
+                            <br>
+                            The bottom section of the website
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="code-implementation" class="section">
+                <h2>تنفيذ الكود | Code Implementation</h2>
+                <div class="highlight">
+                    <p>سنقوم بكتابة كل الأجزاء في ملف main.jsx:</p>
+                    <p>We'll write all parts in main.jsx file:</p>
+                    <div class="code-block" dir="ltr">
+                        <pre><code>import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+// إنشاء جذر التطبيق | Create root element
+createRoot(document.getElementById('root')).render(
+  &lt;div className="parent">
+    {/* Header */}
+    &lt;header>
+      &lt;h1>Welcome to my website&lt;/h1>
+    &lt;/header>
+
+    {/* Main Content */}
+    &lt;main className="main-content">
+      &lt;h2>Main Content&lt;/h2>
+      &lt;p>This is the main content area of our website.&lt;/p>
+    &lt;/main>
+
+    {/* Sidebar */}
+    &lt;aside className="sidebar">
+      &lt;h3>Navigation&lt;/h3>
+      &lt;ul>
+        &lt;li>&lt;a href="#">Link 1&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#">Link 2&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="#">Link 3&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/aside>
+
+    {/* Footer */}
+    &lt;footer>
+      &lt;p> 2024 My Website. All rights reserved.&lt;/p>
+    &lt;/footer>
+  &lt;/div>
+);</code></pre>
+                    </div>
+                    
+                    <div class="note">
+                        <p>ملاحظة: لاحظ أننا نكتب كل الكود في ملف واحد، مما يجعل الكود أقل تنظيماً وأصعب في الصيانة.</p>
+                        <p>Note: Notice that we're writing all code in one file, which makes the code less organized and harder to maintain.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>ملخص الدرس | Lesson Summary</h2>
+                <div class="highlight">
+                    <p>في هذا الدرس تعلمنا:</p>
+                    <p>In this lesson we learned:</p>
+                    <ul>
+                        <li>
+                            كيفية إنشاء مشروع React باستخدام Vite
+                            <br>
+                            How to create a React project using Vite
+                        </li>
+                        <li>
+                            كيفية تنظيم هيكل الموقع
+                            <br>
+                            How to organize website structure
+                        </li>
+                        <li>
+                            كتابة كود React بدون استخدام Components
+                            <br>
+                            Writing React code without using Components
+                        </li>
+                    </ul>
+                    <div class="note">
+                        <p>في الدرس القادم سنقوم بإعادة كتابة نفس الموقع باستخدام Components ونرى كيف يمكن أن يجعل الكود أكثر تنظيماً وأسهل في الصيانة.</p>
+                        <p>In the next lesson, we'll rewrite the same website using Components and see how it can make the code more organized and easier to maintain.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

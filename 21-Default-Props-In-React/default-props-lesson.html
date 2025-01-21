@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Are Default Props in React? | شرح Default Props في React بالتفصيل</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن الدرس</a></li>
+                <li><a href="#problem-statement" class="nav-link">مشكلة القيم الافتراضية</a></li>
+                <li><a href="#default-props-concept" class="nav-link">مفهوم Default Props</a></li>
+                <li><a href="#static-default-props" class="nav-link">Static Default Props</a></li>
+                <li><a href="#practical-example" class="nav-link">مثال عملي</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h1 class="lesson-title">What Are Default Props in React?</h1>
+            <h1 class="lesson-title">شرح Default Props في React بالتفصيل</h1>
+
+            <section id="intro" class="section">
+                <div class="highlight">
+                    <p>بسم الله الرحمن الرحيم</p>
+                    <p>في هذا الدرس سنتعلم كيف نتعامل مع الحالات التي لا يتم فيها تمرير قيم للـ Props، وكيف نضع قيم افتراضية لها باستخدام Default Props.</p>
+                    <p>In this lesson, we'll learn how to handle cases where Props values are not passed, and how to set default values using Default Props.</p>
+                </div>
+            </section>
+
+            <section id="problem-statement" class="section">
+                <h2>مشكلة القيم الافتراضية | The Problem with Missing Props</h2>
+                <div class="highlight">
+                    <p>عندما لا نقوم بتمرير قيمة لـ Prop معين، قد نواجه مشاكل مثل:</p>
+                    <ul>
+                        <li>ظهور قيم فارغة في واجهة المستخدم</li>
+                        <li>أخطاء في العمليات الحسابية</li>
+                        <li>سلوك غير متوقع في التطبيق</li>
+                    </ul>
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl">// مثال لمكون بدون قيم افتراضية</div>
+                            <div class="code-comment">// Component without default values</div>
+                            <div class="code-line">&lt;Project</div>
+                            <div class="code-line">    title="Admin Dashboard"</div>
+                            <div class="code-line">    description="A powerful dashboard"</div>
+                            <div class="code-line">    // numberOfDays is missing!</div>
+                            <div class="code-line">/&gt;</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="default-props-concept" class="section">
+                <h2>مفهوم Default Props | Understanding Default Props</h2>
+                <div class="highlight">
+                    <p>Default Props هي آلية في React تتيح لنا تحديد قيم افتراضية للـ Props في حالة عدم تمريرها للمكون.</p>
+                    <p>Default Props is a React mechanism that allows us to specify default values for Props when they are not passed to the component.</p>
+
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl">// تعريف القيم الافتراضية باستخدام static defaultProps</div>
+                            <div class="code-comment">// Defining default values using static defaultProps</div>
+                            <div class="code-line">class Project extends React.Component {</div>
+                            <div class="code-line">    static defaultProps = {</div>
+                            <div class="code-line">        numberOfDays: 0,</div>
+                            <div class="code-line">        technologies: []</div>
+                            <div class="code-line">    };</div>
+                            <div class="code-line">    // ... rest of the component</div>
+                            <div class="code-line">}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="static-default-props" class="section">
+                <h2>Static Default Props | الخصائص الثابتة للقيم الافتراضية</h2>
+                <div class="highlight">
+                    <p>كلمة static تعني أن هذه القيم خاصة بالـ Class نفسه وليست بالـ Instance:</p>
+                    <ul>
+                        <li>القيم الافتراضية ثابتة لجميع نسخ المكون</li>
+                        <li>يتم استخدامها فقط عند عدم تمرير قيمة للـ Prop</li>
+                        <li>تساعد في تجنب الأخطاء وتحسين تجربة المستخدم</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practical-example" class="section">
+                <h2>مثال عملي | Practical Example</h2>
+                <div class="highlight">
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl">// مكون Project مع القيم الافتراضية</div>
+                            <div class="code-comment">// Project component with default values</div>
+                            <div class="code-line">class Project extends React.Component {</div>
+                            <div class="code-line">    static defaultProps = {</div>
+                            <div class="code-line">        numberOfDays: 0,</div>
+                            <div class="code-line">        technologies: [],</div>
+                            <div class="code-line">        description: 'No description available'</div>
+                            <div class="code-line">    };</div>
+                            <div class="code-line"></div>
+                            <div class="code-line">    render() {</div>
+                            <div class="code-line">        return (</div>
+                            <div class="code-line">            &lt;div className="project"&gt;</div>
+                            <div class="code-line">                &lt;h3&gt;{this.props.title}&lt;/h3&gt;</div>
+                            <div class="code-line">                &lt;p&gt;{this.props.description}&lt;/p&gt;</div>
+                            <div class="code-line">                &lt;p&gt;Days worked: {this.props.numberOfDays}&lt;/p&gt;</div>
+                            <div class="code-line">            &lt;/div&gt;</div>
+                            <div class="code-line">        );</div>
+                            <div class="code-line">    }</div>
+                            <div class="code-line">}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>ملخص الدرس | Summary</h2>
+                <div class="highlight">
+                    <p>تعلمنا في هذا الدرس:</p>
+                    <ul>
+                        <li>أهمية استخدام Default Props في React</li>
+                        <li>كيفية تعريف القيم الافتراضية باستخدام static defaultProps</li>
+                        <li>الفرق بين الخصائص الثابتة (static) والمتغيرة في المكونات</li>
+                        <li>كيفية تطبيق Default Props في مشاريع حقيقية</li>
+                    </ul>
+                    <p>In this lesson, we learned:</p>
+                    <ul>
+                        <li>The importance of using Default Props in React</li>
+                        <li>How to define default values using static defaultProps</li>
+                        <li>The difference between static and instance properties in components</li>
+                        <li>How to implement Default Props in real projects</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

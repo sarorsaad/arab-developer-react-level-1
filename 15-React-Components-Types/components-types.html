@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Components: Functional vs Class | أنواع المكونات في React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link" style="background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; text-align: center; margin-bottom: 20px; width: 100%; box-sizing: border-box;">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <a href="#introduction" class="nav-link">مقدمة</a>
+            <a href="#class-components" class="nav-link">Class Components</a>
+            <a href="#class-syntax" class="nav-link">كتابة Class Component</a>
+            <a href="#render-method" class="nav-link">Render Method</a>
+            <a href="#practical-example" class="nav-link">مثال عملي</a>
+            <a href="#legacy-note" class="nav-link">ملاحظة عن Class Components</a>
+        </nav>
+
+        <main class="content">
+            <section id="introduction" class="section">
+                <h1>React Components: Functional vs Class | أنواع المكونات في React</h1>
+                <div class="highlight">
+                    <p>
+                        في React، هناك نوعان رئيسيان من المكونات: Class Components و Function Components.
+                        <br>
+                        In React, there are two main types of components: Class Components and Function Components.
+                    </p>
+                </div>
+            </section>
+
+            <section id="class-components" class="section">
+                <h2>Class Components | مكونات الفئة</h2>
+                <div class="highlight">
+                    <p>
+                        Class Components هي طريقة قديمة (legacy) لكتابة المكونات في React. تستخدم كلمة class وتمتد من React.Component.
+                        <br>
+                        Class Components are a legacy way of writing React components. They use the class keyword and extend React.Component.
+                    </p>
+                </div>
+            </section>
+
+            <section id="class-syntax" class="section">
+                <h2>كتابة Class Component | Writing a Class Component</h2>
+                <div class="highlight">
+                    <p>
+                        لكتابة Class Component، نحتاج إلى:
+                        <br>
+                        To write a Class Component, we need:
+                    </p>
+                    <ul>
+                        <li>
+                            كلمة class
+                            <br>
+                            The class keyword
+                        </li>
+                        <li>
+                            extends React.Component
+                            <br>
+                            Extending React.Component
+                        </li>
+                        <li>
+                            طريقة render()
+                            <br>
+                            The render() method
+                        </li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code>
+import React from 'react';
+
+class HelloWorld extends React.Component {
+    render() {
+        return (
+            <h1>Hello, World!</h1>
+        );
+    }
+}
+
+export default HelloWorld;
+                        </code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="render-method" class="section">
+                <h2>طريقة Render | The Render Method</h2>
+                <div class="highlight">
+                    <p>
+                        طريقة render() هي طريقة إجبارية في Class Components. تحدد ما سيظهر في المتصفح.
+                        <br>
+                        The render() method is mandatory in Class Components. It defines what will be displayed in the browser.
+                    </p>
+                    <ul>
+                        <li>
+                            يجب أن تعيد JSX
+                            <br>
+                            Must return JSX
+                        </li>
+                        <li>
+                            تُستدعى تلقائياً عند تحديث المكون
+                            <br>
+                            Called automatically when component updates
+                        </li>
+                        <li>
+                            لا يمكن أن تكون async
+                            <br>
+                            Cannot be async
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="practical-example" class="section">
+                <h2>مثال عملي | Practical Example</h2>
+                <div class="highlight">
+                    <p>
+                        دعونا نرى مثالاً عملياً لـ Class Component:
+                        <br>
+                        Let's see a practical example of a Class Component:
+                    </p>
+                    <div class="code-block">
+                        <pre><code>
+import React from 'react';
+
+class Greeting extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>مرحباً بكم في درس React</h1>
+                <p>هذا مثال على Class Component</p>
+            </div>
+        );
+    }
+}
+
+// استخدام المكون
+// Using the component
+<Greeting />
+                        </code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="legacy-note" class="section">
+                <h2>ملاحظة عن Class Components | Note About Class Components</h2>
+                <div class="highlight">
+                    <p>
+                        رغم أن Class Components لا تزال مدعومة، إلا أن React تُوصي باستخدام Function Components مع Hooks.
+                        <br>
+                        Although Class Components are still supported, React recommends using Function Components with Hooks.
+                    </p>
+                    <div class="note">
+                        <p>
+                            سنتعلم Function Components في الدرس القادم
+                            <br>
+                            We will learn Function Components in the next lesson
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

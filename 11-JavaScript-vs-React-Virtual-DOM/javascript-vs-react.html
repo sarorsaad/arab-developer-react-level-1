@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript vs React Virtual DOM | مقارنة بين JavaScript و React Virtual DOM</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link" style="background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; text-align: center; margin-bottom: 20px; width: 100%; box-sizing: border-box;">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <a href="#introduction" class="nav-link">مقدمة</a>
+            <a href="#pure-javascript" class="nav-link">Pure JavaScript DOM</a>
+            <a href="#react-virtual-dom" class="nav-link">React Virtual DOM</a>
+            <a href="#practical-example" class="nav-link">مثال عملي</a>
+            <a href="#performance-comparison" class="nav-link">مقارنة الأداء</a>
+        </nav>
+
+        <main class="content">
+            <section id="introduction" class="section">
+                <h1>JavaScript vs React Virtual DOM | مقارنة بين JavaScript و React Virtual DOM</h1>
+                <div class="highlight">
+                    <p>
+                        في هذا الدرس سنقارن بين طريقة تحديث DOM في JavaScript العادي و React Virtual DOM مع مثال عملي.
+                        <br>
+                        In this lesson, we'll compare how DOM updates work in vanilla JavaScript versus React's Virtual DOM with a practical example.
+                    </p>
+                </div>
+            </section>
+
+            <section id="pure-javascript" class="section">
+                <h2>Pure JavaScript DOM | التعامل مع DOM في JavaScript</h2>
+                <div class="highlight">
+                    <p>
+                        في JavaScript العادي، عند تحديث DOM يتم إعادة بناء العناصر من الصفر.
+                        <br>
+                        In vanilla JavaScript, when updating the DOM, elements are rebuilt from scratch.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// Pure JavaScript Example
+function tickWithPureJavaScript() {
+    const element = `
+        &lt;div&gt;
+            &lt;h1&gt;الوقت الحالي: ${new Date().toLocaleTimeString()}&lt;/h1&gt;
+        &lt;/div&gt;
+    `;
+    
+    document.getElementById('app').innerHTML = element;
+}
+
+setInterval(tickWithPureJavaScript, 1000);</code></pre>
+                </div>
+                <p>
+                    في المثال السابق، كل ثانية يتم:
+                    <br>
+                    In the above example, every second:
+                </p>
+                <ul>
+                    <li>
+                        إعادة بناء كامل شجرة DOM
+                        <br>
+                        Rebuilding the entire DOM tree
+                    </li>
+                    <li>
+                        إعادة إنشاء جميع العناصر
+                        <br>
+                        Recreating all elements
+                    </li>
+                    <li>
+                        تحديث innerHTML للعنصر الأب
+                        <br>
+                        Updating parent element's innerHTML
+                    </li>
+                </ul>
+            </section>
+
+            <section id="react-virtual-dom" class="section">
+                <h2>React Virtual DOM | الـ Virtual DOM في React</h2>
+                <div class="highlight">
+                    <p>
+                        React يستخدم Virtual DOM للمقارنة والتحديث الذكي للعناصر.
+                        <br>
+                        React uses Virtual DOM for smart comparison and updating of elements.
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// React Example
+const root = ReactDOM.createRoot(
+    document.getElementById('root')
+);
+
+function tickWithReact() {
+    const element = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'الوقت الحالي: ' + new Date().toLocaleTimeString()
+        )
+    );
+    
+    root.render(element);
+}
+
+setInterval(tickWithReact, 1000);</code></pre>
+                </div>
+                <p>
+                    مع React، في كل ثانية:
+                    <br>
+                    With React, every second:
+                </p>
+                <ul>
+                    <li>
+                        إنشاء Virtual DOM جديد
+                        <br>
+                        Creating new Virtual DOM
+                    </li>
+                    <li>
+                        مقارنة مع Virtual DOM القديم
+                        <br>
+                        Comparing with old Virtual DOM
+                    </li>
+                    <li>
+                        تحديث فقط العناصر التي تغيرت
+                        <br>
+                        Updating only changed elements
+                    </li>
+                </ul>
+            </section>
+
+            <section id="practical-example" class="section">
+                <h2>مثال عملي | Practical Example</h2>
+                <div class="highlight">
+                    <p>
+                        لنرى الفرق في الأداء بين الطريقتين:
+                        <br>
+                        Let's see the performance difference between both approaches:
+                    </p>
+                </div>
+                <div class="code-block">
+                    <pre><code>// Pure JavaScript - Rebuilds entire tree
+&lt;div id="app1"&gt;&lt;/div&gt;
+&lt;script&gt;
+    function updateTime() {
+        const app = document.getElementById('app1');
+        app.innerHTML = `
+            &lt;div class="container"&gt;
+                &lt;div class="time-display"&gt;
+                    &lt;h1&gt;${new Date().toLocaleTimeString()}&lt;/h1&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+&lt;/script&gt;
+
+// React - Updates only changed text
+&lt;div id="app2"&gt;&lt;/div&gt;
+&lt;script&gt;
+    const root = ReactDOM.createRoot(
+        document.getElementById('app2')
+    );
+    
+    function App() {
+        return React.createElement(
+            'div',
+            { className: 'container' },
+            React.createElement(
+                'div',
+                { className: 'time-display' },
+                React.createElement(
+                    'h1',
+                    null,
+                    new Date().toLocaleTimeString()
+                )
+            )
+        );
+    }
+    
+    setInterval(() => {
+        root.render(React.createElement(App));
+    }, 1000);
+&lt;/script&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="performance-comparison" class="section">
+                <h2>مقارنة الأداء | Performance Comparison</h2>
+                <div class="highlight">
+                    <p>
+                        الفروق الرئيسية في الأداء:
+                        <br>
+                        Key performance differences:
+                    </p>
+                </div>
+                <table class="comparison-table">
+                    <tr>
+                        <th>JavaScript النقي | Pure JavaScript</th>
+                        <th>React Virtual DOM</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            يعيد بناء كل شيء
+                            <br>
+                            Rebuilds everything
+                        </td>
+                        <td>
+                            يحدث فقط ما تغير
+                            <br>
+                            Updates only what changed
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            استهلاك موارد أعلى
+                            <br>
+                            Higher resource consumption
+                        </td>
+                        <td>
+                            استهلاك موارد أقل
+                            <br>
+                            Lower resource consumption
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            أداء أبطأ مع العناصر المتعددة
+                            <br>
+                            Slower with multiple elements
+                        </td>
+                        <td>
+                            أداء أفضل مع العناصر المتعددة
+                            <br>
+                            Better with multiple elements
+                        </td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

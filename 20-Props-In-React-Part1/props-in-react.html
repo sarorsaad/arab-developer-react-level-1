@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Are Props in React? Part 1 | شرح Props في React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن الدرس</a></li>
+                <li><a href="#props-concept" class="nav-link">مفهوم Props</a></li>
+                <li><a href="#static-vs-dynamic" class="nav-link">المكونات الثابتة مقابل الديناميكية</a></li>
+                <li><a href="#props-usage" class="nav-link">استخدام Props</a></li>
+                <li><a href="#key-benefits" class="nav-link">فوائد Props</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h1 class="lesson-title">What Are Props in React? Part 1</h1>
+            <h1 class="lesson-title">شرح Props في React</h1>
+
+            <section id="intro" class="section">
+                <div class="highlight">
+                    <p>بسم الله الرحمن الرحيم</p>
+                    <p>في الدرس السابق، قمنا بإنشاء مشروع بسيط يحتوي على ثلاثة مكونات متشابهة. اليوم سنتعلم كيف نجعل هذه المكونات أكثر كفاءة باستخدام Props.</p>
+                    <p>In our previous lesson, we created a simple project with three similar components. Today, we'll learn how to make these components more efficient using Props.</p>
+                </div>
+            </section>
+
+            <section id="props-concept" class="section">
+                <h2>مفهوم Props | Understanding Props</h2>
+                <div class="highlight">
+                    <p>Props (اختصار لـ Properties) هي الطريقة التي نمرر بها البيانات من المكون الأب إلى المكون الابن في React. تعمل Props مثل الـ parameters في الدوال العادية.</p>
+                    <p>Props (short for Properties) is how we pass data from parent components to child components in React. Props work similarly to parameters in regular functions.</p>
+                </div>
+            </section>
+
+            <section id="static-vs-dynamic" class="section">
+                <h2>المكونات الثابتة مقابل الديناميكية | Static vs Dynamic Components</h2>
+                <div class="highlight">
+                    <p>لنقارن بين المكونات الثابتة والديناميكية:</p>
+                    <p>Let's compare static and dynamic components:</p>
+                    
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl">// المكون الثابت (الطريقة غير المثالية)</div>
+                            <div class="code-comment">// Static Component (Not Ideal)</div>
+                            <div class="code-line">class <span class="class-name">Project</span> extends React.Component {</div>
+                            <div class="code-line">    render() {</div>
+                            <div class="code-line">        return (</div>
+                            <div class="code-line">            &lt;div className="project"&gt;</div>
+                            <div class="code-line">                &lt;h3&gt;Admin Dashboard&lt;/h3&gt;</div>
+                            <div class="code-line">                &lt;p&gt;A powerful admin dashboard&lt;/p&gt;</div>
+                            <div class="code-line">            &lt;/div&gt;</div>
+                            <div class="code-line">        );</div>
+                            <div class="code-line">    }</div>
+                            <div class="code-line">}</div>
+                        </div>
+                    </div>
+
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl">// المكون الديناميكي باستخدام Props (الطريقة المثالية)</div>
+                            <div class="code-comment">// Dynamic Component using Props (Ideal)</div>
+                            <div class="code-line">class <span class="class-name">Project</span> extends React.Component {</div>
+                            <div class="code-line">    render() {</div>
+                            <div class="code-line">        return (</div>
+                            <div class="code-line">            &lt;div className="project"&gt;</div>
+                            <div class="code-line">                &lt;h3&gt;{this.props.title}&lt;/h3&gt;</div>
+                            <div class="code-line">                &lt;p&gt;{this.props.description}&lt;/p&gt;</div>
+                            <div class="code-line">            &lt;/div&gt;</div>
+                            <div class="code-line">        );</div>
+                            <div class="code-line">    }</div>
+                            <div class="code-line">}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="props-usage" class="section">
+                <h2>استخدام Props | Using Props</h2>
+                <div class="highlight">
+                    <p>طريقة استخدام المكون الديناميكي:</p>
+                    <p>How to use the dynamic component:</p>
+                    
+                    <div class="code-block" dir="ltr">
+                        <div class="code-content">
+                            <div class="code-comment" dir="rtl">// استخدام المكون الديناميكي</div>
+                            <div class="code-comment">// Using the Dynamic Component</div>
+                            <div class="code-line">&lt;Project</div>
+                            <div class="code-line">    title="Admin Dashboard"</div>
+                            <div class="code-line">    description="A powerful admin dashboard"</div>
+                            <div class="code-line">/&gt;</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="key-benefits" class="section">
+                <h2>فوائد Props | Key Benefits of Props</h2>
+                <div class="highlight">
+                    <ul class="feature-list">
+                        <li>
+                            <strong>Code Reusability (إعادة استخدام الكود)</strong>: 
+                            <p>نستطيع استخدام نفس المكون مع بيانات مختلفة.</p>
+                            <p>We can use the same component with different data.</p>
+                        </li>
+                        <li>
+                            <strong>Dynamic Content (المحتوى الديناميكي)</strong>: 
+                            <p>يمكننا تغيير محتوى المكون بسهولة عن طريق تغيير الـ props.</p>
+                            <p>We can easily change component content by changing props.</p>
+                        </li>
+                        <li>
+                            <strong>Maintainability (سهولة الصيانة)</strong>: 
+                            <p>الكود يصبح أسهل في الصيانة والتعديل.</p>
+                            <p>Code becomes easier to maintain and modify.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>ملخص الدرس | Summary</h2>
+                <div class="highlight">
+                    <p>Props هي الطريقة الأساسية لجعل مكونات React ديناميكية وقابلة لإعادة الاستخدام. من خلال Props، يمكننا تمرير البيانات من المكون الأب إلى المكون الابن، مما يجعل تطبيقاتنا أكثر مرونة وكفاءة.</p>
+                    <p>Props are the fundamental way to make React components dynamic and reusable. Through Props, we can pass data from parent to child components, making our applications more flexible and efficient.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

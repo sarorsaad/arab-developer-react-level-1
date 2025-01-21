@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Are Components in React? | ما هي المكونات في React؟</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-link" style="background-color: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; text-align: center; margin-bottom: 20px; width: 100%; box-sizing: border-box;">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <a href="#introduction" class="nav-link">مقدمة</a>
+            <a href="#what-are-components" class="nav-link">ما هي المكونات؟</a>
+            <a href="#why-components" class="nav-link">لماذا نستخدم المكونات؟</a>
+            <a href="#component-types" class="nav-link">أنواع المكونات</a>
+            <a href="#practical-example" class="nav-link">مثال عملي</a>
+            <a href="#best-practices" class="nav-link">أفضل الممارسات</a>
+        </nav>
+
+        <main class="content">
+            <section id="introduction" class="section">
+                <h1>What Are Components in React? | ما هي المكونات في React؟</h1>
+                <div class="highlight">
+                    <p>
+                        المكونات هي اللبنات الأساسية لتطبيقات React. تسمح لك بتقسيم واجهة المستخدم إلى أجزاء مستقلة وقابلة لإعادة الاستخدام.
+                        <br>
+                        Components are the building blocks of React applications. They allow you to split the UI into independent, reusable pieces.
+                    </p>
+                </div>
+            </section>
+
+            <section id="what-are-components" class="section">
+                <h2>ما هي المكونات؟ | What are Components?</h2>
+                <div class="highlight">
+                    <p>
+                        المكون هو دالة JavaScript أو class تقبل مدخلات (props) وتعيد عناصر React تصف ما يجب أن يظهر على الشاشة.
+                        <br>
+                        A component is a JavaScript function or class that accepts inputs (props) and returns React elements describing what should appear on the screen.
+                    </p>
+                </div>
+            </section>
+
+            <section id="why-components" class="section">
+                <h2>لماذا نستخدم المكونات؟ | Why Use Components?</h2>
+                <div class="highlight">
+                    <h3>1. إعادة الاستخدام | Reusability</h3>
+                    <p>
+                        يمكن إعادة استخدام المكونات في جميع أنحاء تطبيقك، مما يقلل من تكرار الكود.
+                        <br>
+                        Components can be reused throughout your application, reducing code duplication.
+                    </p>
+
+                    <h3>2. قابلية الصيانة | Maintainability</h3>
+                    <p>
+                        تجعل المكونات الكود الخاص بك أسهل في الصيانة حيث يكون كل مكون مسؤولاً عن منطقه الخاص.
+                        <br>
+                        Components make your code easier to maintain as each component is responsible for its own logic.
+                    </p>
+
+                    <h3>3. سهولة القراءة | Readability</h3>
+                    <p>
+                        تقسيم واجهة المستخدم إلى مكونات يجعل الكود أكثر قابلية للقراءة وأسهل للفهم.
+                        <br>
+                        Breaking down your UI into components makes the code more readable and easier to understand.
+                    </p>
+                </div>
+            </section>
+
+            <section id="component-types" class="section">
+                <h2>أنواع المكونات | Types of Components</h2>
+                <div class="highlight">
+                    <h3>1. المكونات الوظيفية | Function Components</h3>
+                    <div class="code-block">
+                        <pre><code>
+function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+}
+                        </code></pre>
+                    </div>
+
+                    <h3>2. مكونات الفئة | Class Components</h3>
+                    <div class="code-block">
+                        <pre><code>
+class Welcome extends React.Component {
+    render() {
+        return <h1>Hello, {this.props.name}</h1>;
+    }
+}
+                        </code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="practical-example" class="section">
+                <h2>مثال عملي | Practical Example</h2>
+                <div class="highlight">
+                    <p>
+                        دعونا نلقي نظرة على مثال عملي لتقسيم صفحة ويب إلى مكونات:
+                        <br>
+                        Let's look at a practical example of breaking down a webpage into components:
+                    </p>
+                    <div class="code-block">
+                        <pre><code>
+// Header Component | مكون الرأس
+function Header() {
+    return (
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </header>
+    );
+}
+
+// App Component | المكون الرئيسي
+function App() {
+    return (
+        <div>
+            <Header />
+            <div className="container">
+                <Sidebar />
+                <MainContent />
+            </div>
+        </div>
+    );
+}
+                        </code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="best-practices" class="section">
+                <h2>أفضل الممارسات | Best Practices</h2>
+                <div class="highlight">
+                    <ul>
+                        <li>
+                            المسؤولية الواحدة: يجب أن يقوم كل مكون بشيء واحد بشكل جيد
+                            <br>
+                            Single Responsibility: Each component should do one thing well
+                        </li>
+                        <li>
+                            لا تكرر نفسك: إذا كررت نفس الكود، فكر في إنشاء مكون
+                            <br>
+                            DRY: If you repeat code, consider creating a component
+                        </li>
+                        <li>
+                            أسماء ذات معنى: استخدم أسماء واضحة ووصفية لمكوناتك
+                            <br>
+                            Meaningful Names: Use clear, descriptive names for your components
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>
