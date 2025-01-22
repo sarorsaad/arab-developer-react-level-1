@@ -3,29 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Process Explained | شرح عملية المتصفح</title>
+    <title>الدرس الثاني: شرح عملية المتصفح | Lesson Two: Browser Process Explained</title>
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
-        .home-link {
+        /* Other custom styles for this lesson */
+        .tree {
+            font-family: monospace;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        
+        code {
+            direction: ltr;
             display: block;
-            background-color: #2196f3;
-            color: white;
-            text-align: center;
-            padding: 12px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            white-space: pre;
+            overflow-x: auto;
+            color: #333;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+            margin: 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 0;
+        }
+
+        .code-example {
+            margin: 20px 0;
+            background-color: #fff;
             border-radius: 8px;
-            text-decoration: none;
-            margin: 1rem;
-            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
         }
-        .home-link:hover {
-            background-color: #1976d2;
+
+        /* RTL support */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+            color: #6a737d;
+            margin-bottom: 5px;
         }
+
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            color: #032f62;
+        }
+
+        /* Syntax highlighting */
+        .keyword { color: #d73a49; }
+        .string { color: #032f62; }
+        .comment { color: #6a737d; }
+        .function { color: #6f42c1; }
+        .tag { color: #22863a; }
     </style>
 </head>
 <body>
     <div class="container">
         <nav class="sidebar">
-            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
             <h2>المحتويات (Contents)</h2>
             <a href="#intro" class="nav-link">مقدمة (Introduction)</a>
             <a href="#browser-process" class="nav-link">عملية المتصفح (Browser Process)</a>
@@ -35,13 +86,16 @@
             <a href="#js-execution" class="nav-link">تنفيذ JavaScript</a>
             <a href="#vanilla-drawbacks" class="nav-link">مشاكل JavaScript التقليدي</a>
             <a href="#virtual-dom" class="nav-link">الحل: الدوم الافتراضي (Virtual DOM)</a>
+            <a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a>
+            <a href="#original-text" class="nav-link">النص الأصلي | Original Text</a>
         </nav>
 
         <main class="content">
             <section id="intro" class="section">
-                <h1>شرح عملية المتصفح (Browser Process Explained)</h1>
-                <div class="highlight">
-                    <p>لفهم أهمية React وكيف يحسن الأداء، علينا أولاً فهم كيف يعمل المتصفح وكيف يتم عرض صفحات الويب.</p>
+                <div class="lesson-title">
+                    <h1>الدرس الثاني: شرح عملية المتصفح</h1>
+                    <h2>Lesson Two: Browser Process Explained</h2>
+                    <p class="subtitle">لفهم أهمية React وكيف يحسن الأداء، علينا أولاً فهم كيف يعمل المتصفح وكيف يتم عرض صفحات الويب.</p>
                 </div>
             </section>
 
@@ -65,20 +119,37 @@
                 <div class="highlight">
                     <p>DOM هو تمثيل برمجي لصفحة الويب على شكل شجرة من العناصر:</p>
                     <div class="code-example">
-                        <pre>
-&lt;!-- مثال على HTML -->
-&lt;div>
-    &lt;h1>العنوان&lt;/h1>
-    &lt;p>النص&lt;/p>
-&lt;/div>
-
-// تمثيل DOM
+                        <pre><code>
+<span class="arabic-comment">// مثال على عملية تحليل DOM</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;<span class="arabic-content">مثال على DOM</span>&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="app"&gt;
+            &lt;h1&gt;<span class="arabic-content">مرحباً بالعالم</span>&lt;/h1&gt;
+            &lt;p class="description"&gt;<span class="arabic-content">هذا مثال توضيحي</span>&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>
+<span class="arabic-comment">// تمثيل DOM على شكل شجرة</span>
 document
-  └── div
-       ├── h1
-       │    └── "العنوان"
-       └── p
-            └── "النص"</pre>
+  └── html
+       ├── head
+       │    └── title
+       │         └── "<span class="arabic-content">مثال على DOM</span>"
+       └── body
+            └── div#app
+                 ├── h1
+                 │    └── "<span class="arabic-content">مرحباً بالعالم</span>"
+                 └── p.description
+                      └── "<span class="arabic-content">هذا مثال توضيحي</span>"
+                        </code></pre>
                     </div>
                 </div>
             </section>
@@ -92,6 +163,23 @@ document
                         <li>يتم بناؤه بشكل منفصل عن DOM</li>
                         <li>يتضمن الأنماط المحسوبة (Computed Styles)</li>
                     </ul>
+                    <div class="code-example">
+                        <pre><code>
+<span class="arabic-comment">// مثال على CSSOM</span>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    padding: 20px;
+}
+
+.description {
+    color: #666;
+}
+                        </code></pre>
+                    </div>
                 </div>
             </section>
 
@@ -117,12 +205,55 @@ document
                         <li>الاستجابة لتفاعلات المستخدم</li>
                         <li>إجراء طلبات شبكة</li>
                     </ul>
-                </div>
-                <div class="code-example">
-                    <pre>
-// مثال على تعديل DOM
-document.getElementById('title').textContent = 'عنوان جديد';
-document.body.style.backgroundColor = 'blue';</pre>
+                    <div class="code-example">
+                        <pre><code>
+<span class="arabic-comment">// مثال على التحديث المباشر للـ DOM</span>
+document.addEventListener('DOMContentLoaded', () => {
+    <span class="arabic-comment">// إنشاء عنصر جديد</span>
+    const newElement = document.createElement('div');
+    newElement.className = 'message';
+    newElement.textContent = '<span class="arabic-content">تم إضافة هذا العنصر برمجياً</span>';
+    
+    <span class="arabic-comment">// إضافة العنصر للصفحة</span>
+    document.getElementById('app').appendChild(newElement);
+    
+    <span class="arabic-comment">// تعديل محتوى موجود</span>
+    const title = document.querySelector('h1');
+    title.textContent = '<span class="arabic-content">عنوان جديد</span>';
+});
+                        </code></pre>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>
+<span class="arabic-comment">// مثال على تحديثات متعددة للـ DOM</span>
+function updateUI(data) {
+    <span class="arabic-comment">// تحديث عدة عناصر في نفس الوقت</span>
+    document.querySelector('h1').textContent = data.title;
+    document.querySelector('.description').textContent = data.description;
+    
+    <span class="arabic-comment">// إضافة عناصر جديدة</span>
+    const list = document.createElement('ul');
+    data.items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+    });
+    
+    document.getElementById('app').appendChild(list);
+}
+
+<span class="arabic-comment">// استدعاء الدالة مع بيانات</span>
+updateUI({
+    title: '<span class="arabic-content">عنوان جديد</span>',
+    description: '<span class="arabic-content">وصف محدث</span>',
+    items: [
+        '<span class="arabic-content">عنصر ١</span>',
+        '<span class="arabic-content">عنصر ٢</span>',
+        '<span class="arabic-content">عنصر ٣</span>'
+    ]
+});
+                        </code></pre>
+                    </div>
                 </div>
             </section>
 
@@ -149,6 +280,24 @@ document.body.style.backgroundColor = 'blue';</pre>
                         <li>مقارنة الاختلافات وتطبيق التغييرات الضرورية فقط</li>
                         <li>تحسين الأداء بشكل كبير</li>
                     </ul>
+                </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=HGPeeRWviN4" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/675539944116878926/02-browser-process-explained-dom-cssom-render-tree-js-execution-and-vanilla-js-drawbacks-or-shrh" target="_blank">النص الأصلي | Original Text</a></p>
                 </div>
             </section>
         </main>

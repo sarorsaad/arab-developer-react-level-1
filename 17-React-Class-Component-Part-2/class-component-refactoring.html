@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Class Component Part 2: Refactor Code | إعادة هيكلة الكود باستخدام Class Component</title>
+    <title>Lesson Seventeen: React Class Component Part 2 | الدرس السابع عشر: مكونات الفئة في React - الجزء الثاني</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -23,9 +64,10 @@
 
         <main class="content">
             <section id="intro" class="section">
-                <h1>إعادة هيكلة الكود باستخدام Class Component - الجزء الثاني</h1>
-                <h1>React Class Component Part 2: Code Refactoring</h1>
-
+                <div class="lesson-title">
+                    <h1>Lesson Seventeen: React Class Component Part 2</h1>
+                    <h2>الدرس السابع عشر: مكونات الفئة في React - الجزء الثاني</h2>
+                </div>
                 <div class="highlight">
                     <p>في هذا الدرس، سنقوم بإعادة هيكلة الموقع الذي أنشأناه في الدرس السابق باستخدام Class Components.</p>
                     <p>In this lesson, we'll refactor the website we created in the previous lesson using Class Components.</p>
@@ -52,17 +94,25 @@
                     <p>نقوم بإنشاء مكون الهيدر كـ Class Component:</p>
                     <p>Creating the Header as a Class Component:</p>
                     <div class="code-block" dir="ltr">
-                        <pre><code>import React from 'react';
-
+                        <pre><code>
+<span class="arabic-comment">// المكون الرئيسي</span>
 class Header extends React.Component {
     render() {
         return (
             &lt;header>
-                &lt;h1>Welcome to my website&lt;/h1>
-            &lt;/header>
+                &lt;h1&gt;<span class="arabic-content">موقعي</span>&lt;/h1&gt;
+                &lt;nav&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;<span class="arabic-content">الرئيسية</span>&lt;/li&gt;
+                        &lt;li&gt;<span class="arabic-content">المنتجات</span>&lt;/li&gt;
+                        &lt;li&gt;<span class="arabic-content">اتصل بنا</span>&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/nav&gt;
+            &lt;/header&gt;
         );
     }
-}</code></pre>
+}
+                        </code></pre>
                     </div>
                 </div>
             </section>
@@ -73,16 +123,19 @@ class Header extends React.Component {
                     <p>نقوم بإنشاء مكون المحتوى الرئيسي:</p>
                     <p>Creating the Main Content component:</p>
                     <div class="code-block" dir="ltr">
-                        <pre><code>class MainContent extends React.Component {
+                        <pre><code>
+<span class="arabic-comment">// مكون المحتوى الرئيسي</span>
+class MainContent extends React.Component {
     render() {
         return (
-            &lt;main className="main-content">
-                &lt;h2>Main Content&lt;/h2>
-                &lt;p>This is the main content area of our website.&lt;/p>
-            &lt;/main>
+            &lt;main&gt;
+                &lt;h2&gt;<span class="arabic-content">مرحباً بكم في موقعنا</span>&lt;/h2&gt;
+                &lt;p&gt;<span class="arabic-content">نحن نقدم أفضل المنتجات والخدمات</span>&lt;/p&gt;
+            &lt;/main&gt;
         );
     }
-}</code></pre>
+}
+                        </code></pre>
                     </div>
                 </div>
             </section>
@@ -117,15 +170,18 @@ class Header extends React.Component {
                     <p>نقوم بإنشاء مكون التذييل:</p>
                     <p>Creating the Footer component:</p>
                     <div class="code-block" dir="ltr">
-                        <pre><code>class Footer extends React.Component {
+                        <pre><code>
+<span class="arabic-comment">// مكون التذييل</span>
+class Footer extends React.Component {
     render() {
         return (
             &lt;footer>
-                &lt;p>© 2024 My Website. All rights reserved.&lt;/p>
-            &lt;/footer>
+                <span class="arabic-content">جميع الحقوق محفوظة &copy; 2025</span>
+            &lt;/footer&gt;
         );
     }
-}</code></pre>
+}
+                        </code></pre>
                     </div>
                 </div>
             </section>

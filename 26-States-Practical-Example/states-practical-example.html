@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Twenty-Six: States Practical Example | الدرس السادس والعشرون: مثال عملي على States</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن إعادة كتابة الكود</a></li>
+                <li><a href="#initial-code" class="nav-link">الكود الأولي</a></li>
+                <li><a href="#problem" class="nav-link">المشكلة في الكود</a></li>
+                <li><a href="#refactoring" class="nav-link">إعادة كتابة الكود باستخدام States</a></li>
+                <li><a href="#conditional-rendering" class="nav-link">العرض الشرطي في React</a></li>
+                <li><a href="#benefits" class="nav-link">فوائد استخدام States</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+                <li><a href="#original-text" class="nav-link">النص الأصلي</a></li>
+                <li><a href="#original-video" class="nav-link">الفيديو الأصلي</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <div class="lesson-title">
+                <h1>Lesson Twenty-Six: States Practical Example</h1>
+                <h2>الدرس السادس والعشرون: مثال عملي على States</h2>
+            </div>
+
+            <section id="intro" class="section">
+                <div class="highlight">
+                    <p>بسم الله الرحمن الرحيم</p>
+                    <p>في هذا الدرس، سنتعلم كيفية تحسين كودنا باستخدام States من خلال مثال عملي. سنرى كيف يمكن للـ States أن تجعل كودنا أكثر مرونة وقابلية للصيانة.</p>
+                    <p>In this lesson, we'll learn how to improve our code using States through a practical example. We'll see how States can make our code more flexible and maintainable.</p>
+                </div>
+            </section>
+
+            <section id="initial-code" class="section">
+                <h2>الكود الأولي | Initial Code</h2>
+                <div class="highlight">
+                    <p>لنبدأ بمثال بسيط يحتاج إلى تحسين:</p>
+                    <pre><code>
+class AgeChecker extends React.Component {
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;p&gt;Your age is: {this.props.age}&lt;/p&gt;
+                &lt;p&gt;Your age after increment is: {this.props.age + 3}&lt;/p&gt;
+                &lt;p&gt;
+                    {this.props.age + 3 > 30 ? 'Not Accepted' : 'Accepted'}
+                &lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="problem" class="section">
+                <h2>المشكلة في الكود | The Problem</h2>
+                <div class="highlight">
+                    <p>المشكلة في الكود السابق:</p>
+                    <ul>
+                        <li>تكرار العملية الحسابية (this.props.age + 3)</li>
+                        <li>صعوبة تغيير قيمة الزيادة (3) في أكثر من مكان</li>
+                        <li>عدم مرونة الكود عند الحاجة للتعديل</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="refactoring" class="section">
+                <h2>إعادة كتابة الكود باستخدام States | Refactoring with States</h2>
+                <div class="highlight">
+                    <p>لنحسن الكود باستخدام States:</p>
+                    <pre><code>
+class AgeChecker extends React.Component {
+    state = {
+        ageAfterIncrement: this.props.age + 3
+    }
+
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;p&gt;Your age is: {this.props.age}&lt;/p&gt;
+                &lt;p&gt;Your age after increment is: {this.state.ageAfterIncrement}&lt;/p&gt;
+                &lt;p&gt;
+                    {this.state.ageAfterIncrement > 30 ? 'Not Accepted' : 'Accepted'}
+                &lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="conditional-rendering" class="section">
+                <h2>العرض الشرطي في React | Conditional Rendering in React</h2>
+                <div class="highlight">
+                    <p>في React، نستخدم العامل الثلاثي (Ternary Operator) للعرض الشرطي:</p>
+                    <pre><code>// الصيغة العامة
+condition ? valueIfTrue : valueIfFalse
+
+// مثال
+{this.state.ageAfterIncrement > 30 ? 'Not Accepted' : 'Accepted'}</code></pre>
+                </div>
+            </section>
+
+            <section id="benefits" class="section">
+                <h2>فوائد استخدام States | Benefits of Using States</h2>
+                <div class="highlight">
+                    <ul>
+                        <li>تخزين القيم المحسوبة مرة واحدة | Store calculated values once</li>
+                        <li>سهولة التعديل على الكود | Easy code modification</li>
+                        <li>تقليل التكرار | Reduce redundancy</li>
+                        <li>تحسين قابلية الصيانة | Improve maintainability</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>الملخص | Summary</h2>
+                <div class="highlight">
+                    <p>تعلمنا في هذا الدرس كيفية تحسين كودنا باستخدام States. رأينا كيف يمكن للـ States أن تساعدنا في تقليل التكرار وجعل كودنا أكثر مرونة وقابلية للصيانة.</p>
+                    <p>In this lesson, we learned how to improve our code using States. We saw how States can help us reduce redundancy and make our code more flexible and maintainable.</p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/4827858800555546613/26-react-states-practical-example-and-code-refactoring-or-shrh-amly-liaadh-ktabh-alkwd-bastkhdam-states" target="_blank">النص الأصلي | Original Text</a></p>
+                </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://youtu.be/TpUAV9mc3c4?si=mpr262ffwQen15zD" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

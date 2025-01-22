@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript vs React Virtual DOM | مقارنة بين JavaScript و React Virtual DOM</title>
+    <title>Lesson Eleven: JavaScript vs React Virtual DOM | الدرس الحادي عشر: مقارنة بين جافاسكربت و React Virtual DOM</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -16,11 +57,16 @@
             <a href="#react-virtual-dom" class="nav-link">React Virtual DOM</a>
             <a href="#practical-example" class="nav-link">مثال عملي</a>
             <a href="#performance-comparison" class="nav-link">مقارنة الأداء</a>
+            <a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a>
+            <a href="#original-text" class="nav-link">النص الأصلي | Original Text</a>
         </nav>
 
         <main class="content">
             <section id="introduction" class="section">
-                <h1>JavaScript vs React Virtual DOM | مقارنة بين JavaScript و React Virtual DOM</h1>
+                <div class="lesson-title">
+                    <h1>Lesson Eleven: JavaScript vs React Virtual DOM</h1>
+                    <h2>الدرس الحادي عشر: مقارنة بين جافاسكربت و React Virtual DOM</h2>
+                </div>
                 <div class="highlight">
                     <p>
                         في هذا الدرس سنقارن بين طريقة تحديث DOM في JavaScript العادي و React Virtual DOM مع مثال عملي.
@@ -40,11 +86,11 @@
                     </p>
                 </div>
                 <div class="code-block">
-                    <pre><code>// Pure JavaScript Example
+                    <pre><code><span class="arabic-comment">// Pure JavaScript Example</span>
 function tickWithPureJavaScript() {
     const element = `
         &lt;div&gt;
-            &lt;h1&gt;الوقت الحالي: ${new Date().toLocaleTimeString()}&lt;/h1&gt;
+            &lt;h1&gt;<span class="arabic-content">الوقت الحالي:</span> ${new Date().toLocaleTimeString()}&lt;/h1&gt;
         &lt;/div&gt;
     `;
     
@@ -87,7 +133,7 @@ setInterval(tickWithPureJavaScript, 1000);</code></pre>
                     </p>
                 </div>
                 <div class="code-block">
-                    <pre><code>// React Example
+                    <pre><code><span class="arabic-comment">// React Example</span>
 const root = ReactDOM.createRoot(
     document.getElementById('root')
 );
@@ -99,7 +145,7 @@ function tickWithReact() {
         React.createElement(
             'h1',
             null,
-            'الوقت الحالي: ' + new Date().toLocaleTimeString()
+            <span class="arabic-content">الوقت الحالي:</span> + new Date().toLocaleTimeString()
         )
     );
     
@@ -142,7 +188,7 @@ setInterval(tickWithReact, 1000);</code></pre>
                     </p>
                 </div>
                 <div class="code-block">
-                    <pre><code>// Pure JavaScript - Rebuilds entire tree
+                    <pre><code><span class="arabic-comment">// Pure JavaScript - Rebuilds entire tree</span>
 &lt;div id="app1"&gt;&lt;/div&gt;
 &lt;script&gt;
     function updateTime() {
@@ -150,7 +196,7 @@ setInterval(tickWithReact, 1000);</code></pre>
         app.innerHTML = `
             &lt;div class="container"&gt;
                 &lt;div class="time-display"&gt;
-                    &lt;h1&gt;${new Date().toLocaleTimeString()}&lt;/h1&gt;
+                    &lt;h1&gt;<span class="arabic-content">الوقت الحالي:</span> ${new Date().toLocaleTimeString()}&lt;/h1&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         `;
@@ -174,7 +220,7 @@ setInterval(tickWithReact, 1000);</code></pre>
                 React.createElement(
                     'h1',
                     null,
-                    new Date().toLocaleTimeString()
+                    <span class="arabic-content">الوقت الحالي:</span> + new Date().toLocaleTimeString()
                 )
             )
         );
@@ -238,6 +284,24 @@ setInterval(tickWithReact, 1000);</code></pre>
                         </td>
                     </tr>
                 </table>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=Gl-qlxfTx3c" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/4980981187882952628/11-javascript-vs-react-virtual-dom-or-mqarnt-byn-javascript-w-react-virtual-dom" target="_blank">النص الأصلي | Original Text</a></p>
+                </div>
             </section>
         </main>
     </div>

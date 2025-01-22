@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Twenty-Eight: React Event Handlers Pass Parameters | الدرس الثامن والعشرون: تمرير بارامترات مع Event Handlers في React</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن تمرير البارامترات</a></li>
+                <li><a href="#parameter-passing" class="nav-link">طرق تمرير البارامترات</a></li>
+                <li><a href="#arrow-function" class="nav-link">استخدام Arrow Function</a></li>
+                <li><a href="#bind-method" class="nav-link">استخدام Bind</a></li>
+                <li><a href="#common-mistakes" class="nav-link">الأخطاء الشائعة</a></li>
+                <li><a href="#practical-examples" class="nav-link">أمثلة عملية</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+                <li><a href="#original-text" class="nav-link">النص الأصلي</a></li>
+                <li><a href="#original-video" class="nav-link">الفيديو الأصلي</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <header>
+                <div class="lesson-title">
+                    <h1>Lesson Twenty-Eight: React Event Handlers Pass Parameters</h1>
+                    <h2>الدرس الثامن والعشرون: تمرير بارامترات مع Event Handlers في React</h2>
+                </div>
+            </header>
+
+            <section id="intro" class="section">
+                <h2>مقدمة عن تمرير البارامترات</h2>
+                <div class="content">
+                    <p>في هذا الدرس سنتعلم كيفية تمرير البارامترات (Parameters) إلى الدوال (Methods) في معالجات الأحداث (Event Handlers) في React. هذه المهارة مهمة جداً عندما نحتاج إلى تخصيص سلوك المكونات (Components) بناءً على قيم مختلفة.</p>
+                </div>
+            </section>
+
+            <section id="parameter-passing" class="section">
+                <h2>طرق تمرير البارامترات</h2>
+                <div class="content">
+                    <p>هناك طريقتان أساسيتان لتمرير البارامترات إلى معالجات الأحداث في React:</p>
+                    <ol>
+                        <li>استخدام Arrow Function</li>
+                        <li>استخدام طريقة Bind</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="arrow-function" class="section">
+                <h2>استخدام Arrow Function</h2>
+                <div class="content">
+                    <p>الطريقة الأكثر شيوعاً وسهولة هي استخدام Arrow Function:</p>
+                    <pre><code>
+<span class="arabic-comment">// تعريف الدالة</span>
+handleClick = (message) => {
+    alert(message);
+}
+
+<span class="arabic-comment">// استخدام الدالة في الزر</span>
+&lt;button onClick={() => this.handleClick("<span class="arabic-content">مرحباً</span>")}&gt;
+    <span class="arabic-content">اضغط هنا</span>
+&lt;/button&gt;
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="bind-method" class="section">
+                <h2>استخدام Bind</h2>
+                <div class="content">
+                    <p>يمكن أيضاً استخدام طريقة bind:</p>
+                    <pre><code>
+&lt;button onClick={this.handleClick.bind(this, "<span class="arabic-content">مرحباً</span>")}&gt;
+    <span class="arabic-content">اضغط هنا</span>
+&lt;/button&gt;
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="common-mistakes" class="section">
+                <h2>الأخطاء الشائعة</h2>
+                <div class="content">
+                    <p>من الأخطاء الشائعة استدعاء الدالة مباشرة مع القوسين:</p>
+                    <pre><code>
+<span class="arabic-comment">// ❌ خطأ - سيتم تنفيذ الدالة مباشرة</span>
+&lt;button onClick={this.handleClick("<span class="arabic-content">مرحباً</span>")}&gt;
+
+<span class="arabic-comment">// ✅ صحيح - سيتم تنفيذ الدالة عند النقر</span>
+&lt;button onClick={() => this.handleClick("<span class="arabic-content">مرحباً</span>")}&gt;
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="practical-examples" class="section">
+                <h2>أمثلة عملية</h2>
+                <div class="content">
+                    <p>مثال عملي لقائمة منتجات:</p>
+                    <pre><code>
+class ProductList extends React.Component {
+    <span class="arabic-comment">// دالة معالجة حدث الشراء</span>
+    handleBuy = (productId, price) => {
+        console.log(`<span class="arabic-content">شراء المنتج</span> ${productId} <span class="arabic-content">بسعر</span> ${price}`);
+    }
+
+    render() {
+        return (
+            &lt;div&gt;
+                <span class="arabic-comment">// أزرار المنتجات مع تمرير معرف المنتج والسعر</span>
+                &lt;button onClick={() => this.handleBuy(1, 99.99)}&gt;
+                    <span class="arabic-content">شراء المنتج 1</span>
+                &lt;/button&gt;
+                &lt;button onClick={() => this.handleBuy(2, 149.99)}&gt;
+                    <span class="arabic-content">شراء المنتج 2</span>
+                &lt;/button&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>ملخص الدرس</h2>
+                <div class="content">
+                    <ul>
+                        <li>استخدم Arrow Function لتمرير البارامترات بشكل مرن ومقروء</li>
+                        <li>تجنب استدعاء الدالة مباشرة مع القوسين في الـ onClick</li>
+                        <li>يمكنك تمرير أكثر من بارامتر للدالة حسب الحاجة</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي</h2>
+                <div class="content">
+                    <p>السلام عليكم، بسم الله، اللهم صلي وسلم ورحمة الله وبركة على سيدنا محمد وعلى آله وأصحابي أجمعين النهاردة هنكمل رحلتنا في تعلم الرسبوندينج تو إيفينس أو إيه هي الإيفينس هندلر أو إزاي إن الكمبوننت بتاعك في الرياكت يكون مستجيب للأحداث بتاعت اليودا...</p>
+                </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي</h2>
+                <div class="content">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p><a href="https://www.youtube.com/watch?v=4xjWqUGC5Ko" target="_blank" class="video-link">شاهد الفيديو على يوتيوب</a></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

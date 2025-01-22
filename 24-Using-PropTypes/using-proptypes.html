@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Twenty-Four: Using PropTypes | الدرس الرابع والعشرون: استخدام PropTypes</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن PropTypes</a></li>
+                <li><a href="#installation" class="nav-link">تثبيت PropTypes</a></li>
+                <li><a href="#basic-usage" class="nav-link">الاستخدام الأساسي</a></li>
+                <li><a href="#available-types" class="nav-link">أنواع PropTypes المتاحة</a></li>
+                <li><a href="#required-props" class="nav-link">الخصائص المطلوبة</a></li>
+                <li><a href="#complex-types" class="nav-link">PropTypes المركبة</a></li>
+                <li><a href="#error-messages" class="nav-link">رسائل الخطأ</a></li>
+                <li><a href="#best-practices" class="nav-link">أفضل الممارسات</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <div class="lesson-title">
+                <h1>Lesson Twenty-Four: Using PropTypes</h1>
+                <h2>الدرس الرابع والعشرون: استخدام PropTypes</h2>
+            </div>
+
+            <section id="intro" class="section">
+                <div class="highlight">
+                    <p>بسم الله الرحمن الرحيم</p>
+                    <p>في هذا الدرس، سنتعلم كيفية استخدام PropTypes للتحقق من أنواع البيانات في مكونات React. يساعدنا PropTypes في التحقق من صحة أنواع البيانات التي يتم تمريرها إلى مكوناتنا، مما يجعل تطبيقاتنا أكثر موثوقية وأسهل في التصحيح.</p>
+                    <p>In this lesson, we'll learn how to use PropTypes for type checking in React components. PropTypes help us validate the data types of props passed to our components, making our applications more reliable and easier to debug.</p>
+                </div>
+            </section>
+
+            <section id="installation" class="section">
+                <h2>تثبيت PropTypes | Installing PropTypes</h2>
+                <div class="highlight">
+                    <p>أولاً، نحتاج إلى تثبيت حزمة PropTypes:</p>
+                    <p>First, we need to install the PropTypes package:</p>
+                    <pre><code>npm install prop-types</code></pre>
+                </div>
+            </section>
+
+            <section id="basic-usage" class="section">
+                <h2>الاستخدام الأساسي | Basic Usage</h2>
+                <div class="highlight">
+                    <p>هذا مثال أساسي على استخدام PropTypes:</p>
+                    <p>Here's a basic example of using PropTypes:</p>
+                    <pre><code>import React from 'react';
+import PropTypes from 'prop-types';
+
+class UserProfile extends React.Component {
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;h2&gt;{this.props.name}&lt;/h2&gt;
+                &lt;p&gt;Age: {this.props.age}&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+UserProfile.propTypes = {
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number
+};</code></pre>
+                </div>
+            </section>
+
+            <section id="available-types" class="section">
+                <h2>أنواع PropTypes المتاحة | Available PropTypes</h2>
+                <div class="highlight">
+                    <p>يتضمن React PropTypes العديد من المدققات:</p>
+                    <p>React PropTypes includes several validators:</p>
+                    <ul>
+                        <li>PropTypes.string | للنصوص</li>
+                        <li>PropTypes.number | للأرقام</li>
+                        <li>PropTypes.bool | للقيم المنطقية</li>
+                        <li>PropTypes.array | للمصفوفات</li>
+                        <li>PropTypes.object | للكائنات</li>
+                        <li>PropTypes.func | للدوال</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="required-props" class="section">
+                <h2>الخصائص المطلوبة | Required Props</h2>
+                <div class="highlight">
+                    <p>يمكنك تحديد خاصية كمطلوبة بإضافة isRequired:</p>
+                    <p>You can mark a prop as required by adding .isRequired:</p>
+                    <pre><code>MyComponent.propTypes = {
+    requiredString: PropTypes.string.isRequired,
+    requiredNumber: PropTypes.number.isRequired
+};</code></pre>
+                </div>
+            </section>
+
+            <section id="complex-types" class="section">
+                <h2>PropTypes المركبة | Complex PropTypes</h2>
+                <div class="highlight">
+                    <p>يدعم PropTypes أيضًا الأنواع الأكثر تعقيدًا:</p>
+                    <p>PropTypes also supports more complex types:</p>
+                    <pre><code>MyComponent.propTypes = {
+    // Array of numbers | مصفوفة من الأرقام
+    numbers: PropTypes.arrayOf(PropTypes.number),
+
+    // Object with specific shape | كائن بشكل محدد
+    user: PropTypes.shape({
+        name: PropTypes.string,
+        age: PropTypes.number
+    }),
+
+    // One of specific values | واحد من قيم محددة
+    status: PropTypes.oneOf(['active', 'inactive'])
+};</code></pre>
+                </div>
+            </section>
+
+            <section id="error-messages" class="section">
+                <h2>رسائل الخطأ | Error Messages</h2>
+                <div class="highlight">
+                    <p>عندما يفشل التحقق من نوع الخاصية، سيظهر React تحذيرًا في وحدة التحكم أثناء التطوير:</p>
+                    <p>When a prop type validation fails, React will show a warning in the console during development:</p>
+                    <pre><code>Warning: Failed prop type: Invalid prop `age` of type `string` 
+supplied to `UserProfile`, expected `number`.</code></pre>
+                </div>
+            </section>
+
+            <section id="best-practices" class="section">
+                <h2>أفضل الممارسات | Best Practices</h2>
+                <div class="highlight">
+                    <ul>
+                        <li>دائمًا حدد PropTypes لمكوناتك | Always define PropTypes for your components</li>
+                        <li>استخدم isRequired للخصائص الإلزامية | Use .isRequired for mandatory props</li>
+                        <li>وثّق أنواع الخصائص المعقدة | Document complex prop types</li>
+                        <li>قم بإزالة PropTypes في الإنتاج | Remove PropTypes in production</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>الملخص | Summary</h2>
+                <div class="highlight">
+                    <p>PropTypes أداة قوية للتحقق من الأنواع في React. تساعد في اكتشاف الأخطاء مبكرًا وتجعل الكود الخاص بك أكثر قابلية للصيانة.</p>
+                    <p>PropTypes is a powerful tool for type checking in React. It helps catch bugs early and makes your code more maintainable.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

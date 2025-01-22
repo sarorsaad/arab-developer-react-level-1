@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Understanding JSX and Babel | فهم JSX و Babel</title>
+    <title>Lesson Ten: Understanding JSX | الدرس العاشر: فهم JSX</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -17,11 +58,16 @@
             <a href="#babel-process" class="nav-link">عملية التحويل في Babel</a>
             <a href="#jsx-benefits" class="nav-link">مميزات JSX</a>
             <a href="#practical-example" class="nav-link">مثال عملي</a>
+            <a href="#original-video" class="nav-link">الفيديو الأصلي</a>
+            <a href="#original-text" class="nav-link">النص الأصلي</a>
         </nav>
 
         <main class="content">
             <section id="introduction" class="section">
-                <h1>Understanding JSX and Babel | فهم JSX و Babel</h1>
+                <div class="lesson-title">
+                    <h1>Lesson Ten: Understanding JSX</h1>
+                    <h2>الدرس العاشر: فهم JSX</h2>
+                </div>
                 <p>
                     في هذا الدرس سنتعلم عن JSX وكيف يتم تحويله إلى JavaScript باستخدام Babel. سنفهم لماذا نستخدم JSX وما هي مميزاته.
                     <br>
@@ -39,13 +85,15 @@
                     </p>
                 </div>
                 <div class="code-block">
-                    <pre><code>// JSX Syntax
+                    <pre><code>
+<span class="arabic-comment">// مثال بسيط على JSX</span>
 const element = (
     &lt;div&gt;
-        &lt;h1&gt;Hello World&lt;/h1&gt;
-        &lt;p&gt;مرحباً بكم&lt;/p&gt;
+        &lt;h1&gt;<span class="arabic-content">مرحباً بالعالم</span>&lt;/h1&gt;
+        &lt;p&gt;<span class="arabic-content">هذا مثال على JSX</span>&lt;/p&gt;
     &lt;/div&gt;
-);</code></pre>
+);
+                    </code></pre>
                 </div>
             </section>
 
@@ -75,7 +123,8 @@ const element = _jsxs("div", {
         _jsx("h1", { children: "Hello" }),
         _jsx("p", { children: "Welcome" })
     ]
-});</code></pre>
+});
+                    </code></pre>
                 </div>
             </section>
 
@@ -145,14 +194,34 @@ const element = _jsxs("div", {
                     </p>
                 </div>
                 <div class="code-block">
-                    <pre><code>// Using JSX with JavaScript Expressions
-const name = "محمد";
-const greeting = (
-    &lt;div className="greeting"&gt;
-        &lt;h1&gt;Hello, {name}!&lt;/h1&gt;
-        &lt;p&gt;Current time: {new Date().toLocaleTimeString()}&lt;/p&gt;
+                    <pre><code>
+<span class="arabic-comment">// استخدام التعبيرات في JSX</span>
+const name = '<span class="arabic-content">أحمد</span>';
+const element = (
+    &lt;div&gt;
+        &lt;h1&gt;<span class="arabic-content">مرحباً</span> {name}&lt;/h1&gt;
+        &lt;p&gt;<span class="arabic-content">الوقت الحالي هو:</span> {new Date().toLocaleTimeString()}&lt;/p&gt;
     &lt;/div&gt;
-);</code></pre>
+);
+                    </code></pre>
+                </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=kM6T_2T5yEc" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/6070852297709011399/10-understanding-jsx-transforming-jsx-to-javascript-with-babel-or-shrh-jsx-wthwylh-ila-javascript" target="_blank">النص الأصلي | Original Text</a></p>
                 </div>
             </section>
         </main>

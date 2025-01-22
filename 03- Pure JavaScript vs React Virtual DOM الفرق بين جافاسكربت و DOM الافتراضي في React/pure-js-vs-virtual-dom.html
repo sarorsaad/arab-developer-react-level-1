@@ -3,23 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pure JavaScript vs React Virtual DOM | الفرق بين جافاسكربت و DOM الافتراضي في React</title>
+    <title>Lesson Three: Pure JavaScript vs React Virtual DOM | الدرس الثالث: الفرق بين جافاسكربت و DOM الافتراضي في React</title>
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
-        .home-link {
-            display: block;
-            background-color: #2196f3;
+        /* Base styles */
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
             color: white;
-            text-align: center;
-            padding: 12px;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            margin: 1rem;
+            margin-bottom: 20px;
+            text-align: center;
             font-weight: bold;
         }
-        .home-link:hover {
-            background-color: #1976d2;
+        .home-button:hover {
+            background-color: #0077cc;
         }
+        
+        /* Enhanced code block styles */
+        code {
+            direction: ltr;
+            display: block;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            white-space: pre;
+            overflow-x: auto;
+            color: #333;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+            margin: 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 0;
+        }
+
+        .code-example {
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        /* RTL support */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+            color: #6a737d;
+            margin-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            color: #032f62;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Syntax highlighting */
+        .keyword { color: #d73a49; }
+        .string { color: #032f62; }
+        .comment { color: #6a737d; }
+        .function { color: #6f42c1; }
+        .tag { color: #22863a; }
+        .variable { color: #e36209; }
+        .operator { color: #005cc5; }
     </style>
 </head>
 <body>
@@ -27,25 +90,30 @@
         <nav class="sidebar">
             <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
             <h2>المحتويات (Contents)</h2>
-            <a href="#intro" class="nav-link">مقدمة عن الفرق (Introduction)</a>
-            <a href="#vanilla-js" class="nav-link">كيف يعمل جافاسكربت التقليدي (How Vanilla JS Works)</a>
+            <a href="#introduction" class="nav-link">مقدمة عن الفرق (Introduction)</a>
+            <a href="#how-vanilla-works" class="nav-link">كيف يعمل جافاسكربت التقليدي (How Vanilla JS Works)</a>
             <a href="#dom-updates" class="nav-link">تحديثات DOM المتكررة (DOM Updates)</a>
-            <a href="#virtual-dom-intro" class="nav-link">مفهوم DOM الافتراضي (Virtual DOM Concept)</a>
+            <a href="#virtual-dom-concept" class="nav-link">مفهوم DOM الافتراضي (Virtual DOM Concept)</a>
             <a href="#react-process" class="nav-link">عملية React (React Process)</a>
             <a href="#reconciliation" class="nav-link">عملية المطابقة (Reconciliation)</a>
             <a href="#benefits" class="nav-link">فوائد Virtual DOM (Benefits)</a>
             <a href="#conclusion" class="nav-link">الخلاصة (Conclusion)</a>
+            <a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a>
+            <a href="#original-text" class="nav-link">النص الأصلي | Original Text</a>
         </nav>
 
         <main class="content">
-            <section id="intro" class="section">
-                <h1>الفرق بين جافاسكربت التقليدي و DOM الافتراضي في React</h1>
+            <section id="introduction" class="section">
+                <div class="lesson-title">
+                    <h1>Lesson Three: Pure JavaScript vs React Virtual DOM</h1>
+                    <h2>الدرس الثالث: الفرق بين جافاسكربت و DOM الافتراضي في React</h2>
+                </div>
                 <div class="highlight">
                     <p>لفهم قوة React، علينا أولاً فهم الفرق بين طريقة عمل جافاسكربت التقليدي (Vanilla JavaScript) وطريقة عمل DOM الافتراضي (Virtual DOM) في React.</p>
                 </div>
             </section>
 
-            <section id="vanilla-js" class="section">
+            <section id="how-vanilla-works" class="section">
                 <h2>كيف يعمل جافاسكربت التقليدي (How Vanilla JS Works)</h2>
                 <div class="process-step">
                     <p>في جافاسكربت التقليدي، عند تحديث أي عنصر:</p>
@@ -56,11 +124,22 @@
                     </ul>
                 </div>
                 <div class="code-example">
-                    <pre>
-// مثال على التحديث المباشر في جافاسكربت التقليدي
-document.getElementById('title').textContent = 'عنوان جديد';
-document.getElementById('content').innerHTML = 'محتوى جديد';
-document.getElementById('button').style.backgroundColor = 'blue';</pre>
+                    <pre><code>
+<span class="arabic-comment">// مثال على التحديث المباشر في جافاسكربت التقليدي</span>
+<span class="keyword">const</span> <span class="function">updateUI</span> = () => {
+    <span class="arabic-comment">// إنشاء عنصر جديد</span>
+    <span class="keyword">const</span> <span class="variable">element</span> = <span class="variable">document</span>.<span class="function">createElement</span>(<span class="string">'div'</span>);
+    <span class="variable">element</span>.<span class="variable">className</span> = <span class="string">'container'</span>;
+    <span class="variable">element</span>.<span class="variable">innerHTML</span> = <span class="string">`
+        &lt;h1&gt;<span class="arabic-content">مرحباً بالعالم</span>&lt;/h1&gt;
+        &lt;p&gt;<span class="arabic-content">هذا نص تجريبي</span>&lt;/p&gt;
+    `</span>;
+    
+    <span class="arabic-comment">// حذف العنصر القديم وإضافة الجديد</span>
+    <span class="keyword">const</span> <span class="variable">root</span> = <span class="variable">document</span>.<span class="function">getElementById</span>(<span class="string">'root'</span>);
+    <span class="variable">root</span>.<span class="variable">innerHTML</span> = <span class="string">''</span>;
+    <span class="variable">root</span>.<span class="function">appendChild</span>(<span class="variable">element</span>);
+};</code></pre>
                 </div>
             </section>
 
@@ -76,7 +155,7 @@ document.getElementById('button').style.backgroundColor = 'blue';</pre>
                 </div>
             </section>
 
-            <section id="virtual-dom-intro" class="section">
+            <section id="virtual-dom-concept" class="section">
                 <h2>مفهوم DOM الافتراضي (Virtual DOM Concept)</h2>
                 <div class="process-step">
                     <p>DOM الافتراضي هو:</p>
@@ -135,6 +214,24 @@ document.getElementById('button').style.backgroundColor = 'blue';</pre>
                         <li>تحسين عملية تحديث واجهة المستخدم (Optimized UI Updates)</li>
                         <li>تحسين الأداء العام للتطبيق (Enhanced Overall Performance)</li>
                     </ul>
+                </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=_qqTFf_3HGY" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/4980981187882946522/03-pure-javascript-vs-react-virtual-dom-or-alfrq-byn-jafaskrbt-w-dom-alaftradhy-fy-react" target="_blank">النص الأصلي | Original Text</a></p>
                 </div>
             </section>
         </main>

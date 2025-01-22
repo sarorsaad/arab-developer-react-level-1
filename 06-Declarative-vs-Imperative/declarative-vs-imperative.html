@@ -3,23 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Declarative vs Imperative Programming | البرمجة التصريحية مقابل الإجرائية</title>
+    <title>Lesson Six: Declarative vs Imperative Programming | الدرس السادس: البرمجة التصريحية مقابل الإجرائية</title>
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
-        .home-link {
-            display: block;
-            background-color: #2196f3;
+        /* Base styles */
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
             color: white;
-            text-align: center;
-            padding: 12px;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            margin: 1rem;
+            margin-bottom: 20px;
+            text-align: center;
             font-weight: bold;
         }
-        .home-link:hover {
-            background-color: #1976d2;
+        .home-button:hover {
+            background-color: #0077cc;
         }
+        
+        /* Enhanced code block styles */
+        code {
+            direction: ltr;
+            display: block;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            white-space: pre;
+            overflow-x: auto;
+            color: #333;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+            margin: 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 0;
+        }
+
+        .code-example {
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        /* RTL support */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+            color: #6a737d;
+            margin-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            color: #032f62;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Syntax highlighting */
+        .keyword { color: #d73a49; }
+        .string { color: #032f62; }
+        .comment { color: #6a737d; }
+        .function { color: #6f42c1; }
+        .tag { color: #22863a; }
+        .variable { color: #e36209; }
+        .operator { color: #005cc5; }
+        .number { color: #005cc5; }
     </style>
 </head>
 <body>
@@ -34,10 +98,16 @@
                 <li><a href="#comparison" class="nav-link">مقارنة بين النمطين (Comparison)</a></li>
                 <li><a href="#react-example" class="nav-link">مثال في React (React Example)</a></li>
                 <li><a href="#benefits" class="nav-link">الفوائد (Benefits)</a></li>
+                <li><a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a></li>
+                <li><a href="#original-text" class="nav-link">النص الأصلي | Original Text</a></li>
             </ul>
         </nav>
 
         <main class="content">
+            <div class="lesson-title">
+                <h1>Lesson Six: Declarative vs Imperative Programming</h1>
+                <h2>الدرس السادس: البرمجة التصريحية مقابل الإجرائية</h2>
+            </div>
             <section id="intro" class="section">
                 <h1>البرمجة التصريحية مقابل الأمرية (Declarative vs Imperative Programming)</h1>
                 <div class="highlight">
@@ -59,14 +129,16 @@
                         <li>تدير الحالة يدوياً (Manually manage state)</li>
                     </ul>
                     <div class="code-example">
-                        <pre>
-// مثال للبرمجة الأمرية في JavaScript
-// Imperative JavaScript Example
-const container = document.createElement('div');
-container.className = 'greeting';
-const text = document.createTextNode('Hello from JavaScript!');
-container.appendChild(text);
-document.body.appendChild(container);</pre>
+                        <pre><code>
+<span class="arabic-comment">// البرمجة الإجرائية (Imperative)</span>
+<span class="keyword">const</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">const</span> <span class="variable">doubledNumbers</span> = [];
+
+<span class="keyword">for</span> (<span class="keyword">let</span> <span class="variable">i</span> = <span class="number">0</span>; <span class="variable">i</span> < <span class="variable">numbers</span>.<span class="variable">length</span>; <span class="variable">i</span>++) {
+    <span class="variable">doubledNumbers</span>.<span class="function">push</span>(<span class="variable">numbers</span>[<span class="variable">i</span>] * <span class="number">2</span>);
+}
+
+<span class="variable">console</span>.<span class="function">log</span>(<span class="variable">doubledNumbers</span>); <span class="comment">// [2, 4, 6, 8, 10]</span></code></pre>
                     </div>
                 </div>
             </section>
@@ -81,16 +153,12 @@ document.body.appendChild(container);</pre>
                         <li>تركز على النتيجة النهائية (Focus on end result)</li>
                     </ul>
                     <div class="code-example">
-                        <pre>
-// مثال للبرمجة التصريحية في React
-// Declarative React Example
-const Greeting = () => {
-    return (
-        &lt;div className="greeting"&gt;
-            Hello from React!
-        &lt;/div&gt;
-    );
-};</pre>
+                        <pre><code>
+<span class="arabic-comment">// البرمجة التصريحية (Declarative)</span>
+<span class="keyword">const</span> <span class="variable">numbers</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">const</span> <span class="variable">doubledNumbers</span> = <span class="variable">numbers</span>.<span class="function">map</span>(<span class="variable">num</span> => <span class="variable">num</span> * <span class="number">2</span>);
+
+<span class="variable">console</span>.<span class="function">log</span>(<span class="variable">doubledNumbers</span>); <span class="comment">// [2, 4, 6, 8, 10]</span></code></pre>
                     </div>
                 </div>
             </section>
@@ -121,17 +189,39 @@ const Greeting = () => {
                 <div class="highlight">
                     <p>مثال عملي يوضح الفرق (Practical example showing the difference):</p>
                     <div class="code-example">
-                        <pre>
-// البرمجة الأمرية (Imperative)
-let numbers = [1, 2, 3, 4, 5];
-let doubled = [];
-for(let i = 0; i < numbers.length; i++) {
-    doubled.push(numbers[i] * 2);
-}
-
-// البرمجة التصريحية (Declarative)
-const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map(num => num * 2);</pre>
+                        <pre><code>
+<span class="arabic-comment">// مثال على البرمجة الإجرائية في React</span>
+<span class="keyword">function</span> <span class="function">ImperativeCounter</span>() {
+    <span class="keyword">let</span> <span class="variable">count</span> = <span class="number">0</span>;
+    
+    <span class="keyword">function</span> <span class="function">handleClick</span>() {
+        <span class="variable">count</span>++;
+        <span class="variable">document</span>.<span class="function">getElementById</span>(<span class="string">'counter'</span>).<span class="variable">textContent</span> = <span class="variable">count</span>;
+    }
+    
+    <span class="keyword">return</span> (
+        &lt;<span class="tag">div</span>&gt;
+            &lt;<span class="tag">h1</span> <span class="variable">id</span>=<span class="string">"counter"</span>&gt;<span class="number">0</span>&lt;/<span class="tag">h1</span>&gt;
+            &lt;<span class="tag">button</span> <span class="variable">onClick</span>={<span class="variable">handleClick</span>}&gt;
+                <span class="arabic-content">زيادة</span>
+            &lt;/<span class="tag">button</span>&gt;
+        &lt;/<span class="tag">div</span>&gt;
+    );
+}</code></pre>
+                        <pre><code>
+<span class="arabic-comment">// مثال على البرمجة التصريحية في React</span>
+<span class="keyword">function</span> <span class="function">DeclarativeCounter</span>() {
+    <span class="keyword">const</span> [<span class="variable">count</span>, <span class="function">setCount</span>] = <span class="variable">React</span>.<span class="function">useState</span>(<span class="number">0</span>);
+    
+    <span class="keyword">return</span> (
+        &lt;<span class="tag">div</span>&gt;
+            &lt;<span class="tag">h1</span>&gt;{<span class="variable">count</span>}&lt;/<span class="tag">h1</span>&gt;
+            &lt;<span class="tag">button</span> <span class="variable">onClick</span>={() => <span class="function">setCount</span>(<span class="variable">count</span> + <span class="number">1</span>)}&gt;
+                <span class="arabic-content">زيادة</span>
+            &lt;/<span class="tag">button</span>&gt;
+        &lt;/<span class="tag">div</span>&gt;
+    );
+}</code></pre>
                     </div>
                 </div>
             </section>
@@ -146,6 +236,24 @@ const doubled = numbers.map(num => num * 2);</pre>
                         <li>أسهل للاختبار (Easier to test)</li>
                         <li>إعادة استخدام أفضل للكود (Better code reusability)</li>
                     </ul>
+                </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=E5WgR_KAc_A" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/4980981187882951604/06-declarative-vs-imperative-programming-key-differences-or-alfrq-byn-albrmjh-altsryhyh-walamryh" target="_blank">النص الأصلي | Original Text</a></p>
                 </div>
             </section>
         </main>

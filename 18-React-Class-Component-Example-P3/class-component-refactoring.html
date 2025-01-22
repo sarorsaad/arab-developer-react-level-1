@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Class Component Example P3: Refactoring Code | إعادة هيكلة الكود باستخدام Class Component</title>
+    <title>Lesson Eighteen: React Class Component Example Part 3 | الدرس الثامن عشر: مثال على مكونات الفئة في React - الجزء الثالث</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -26,8 +67,10 @@
         </nav>
 
         <main class="content">
-            <h1 class="lesson-title">React Class Component Example P3: Refactoring Code</h1>
-            <h1 class="lesson-title">إعادة هيكلة الكود باستخدام Class Component</h1>
+            <div class="lesson-title">
+                <h1>Lesson Eighteen: React Class Component Example Part 3</h1>
+                <h2>الدرس الثامن عشر: مثال على مكونات الفئة في React - الجزء الثالث</h2>
+            </div>
 
             <section id="intro" class="section">
                 <div class="highlight">
@@ -173,7 +216,7 @@ class Footer extends React.Component {
     render() {
         return (
             &lt;footer>
-                &lt;p>© 2024 My Website. All rights reserved.&lt;/p>
+                &lt;p> 2024 My Website. All rights reserved.&lt;/p>
             &lt;/footer>
         );
     }

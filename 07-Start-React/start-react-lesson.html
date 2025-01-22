@@ -3,32 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>07-Start React: Write Your First Code & Convert Pure JS to React | استخدام React عبر CDN</title>
+    <title>Lesson Seven: Start React | الدرس السابع: البدء مع React</title>
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
-        .home-link {
-            display: block;
-            background-color: #2196f3;
+        /* Base styles */
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
             color: white;
-            text-align: center;
-            padding: 12px;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            margin: 1rem;
+            margin-bottom: 20px;
+            text-align: center;
             font-weight: bold;
         }
-        .home-link:hover {
-            background-color: #1976d2;
+        .home-button:hover {
+            background-color: #0077cc;
         }
+        
+        /* Enhanced code block styles */
+        code {
+            direction: ltr;
+            display: block;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            white-space: pre;
+            overflow-x: auto;
+            color: #333;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+            margin: 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 0;
+        }
+
+        .code-example {
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        /* RTL support */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+            color: #6a737d;
+            margin-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            color: #032f62;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Syntax highlighting */
+        .keyword { color: #d73a49; }
+        .string { color: #032f62; }
+        .comment { color: #6a737d; }
+        .function { color: #6f42c1; }
+        .tag { color: #22863a; }
+        .variable { color: #e36209; }
+        .operator { color: #005cc5; }
+        .number { color: #005cc5; }
     </style>
 </head>
 <body>
     <div class="container">
         <nav class="sidebar">
-            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
             <div class="lesson-title">
-                <h1>Start React: Write Your First Code</h1>
-                <h2>البدء مع React: كتابة أول كود</h2>
+                <h1>Lesson Seven: Start React</h1>
+                <h2>الدرس السابع: البدء مع React</h2>
             </div>
             <ul class="nav-links">
                 <li><a href="#introduction" class="nav-link">Introduction | مقدمة</a></li>
@@ -36,6 +100,8 @@
                 <li><a href="#react-example" class="nav-link">React Example | مثال React</a></li>
                 <li><a href="#explanation" class="nav-link">Understanding Code | فهم الكود</a></li>
                 <li><a href="#key-differences" class="nav-link">Key Differences | الفروق الرئيسية</a></li>
+                <li><a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a></li>
+                <li><a href="#original-text" class="nav-link">النص الأصلي | Original Text</a></li>
             </ul>
         </nav>
 
@@ -185,6 +251,24 @@ root.render(p);</code></pre>
                         <p>React uses Virtual DOM for efficient updates | يستخدم React DOM افتراضي للتحديثات الفعالة</p>
                     </li>
                 </ul>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=4xjWqUGC5Ko" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/4980981187882952628/07-start-react-write-your-first-code-convert-pure-js-to-react-or-astkhdam-react-abr-cdn" target="_blank">النص الأصلي | Original Text</a></p>
+                </div>
             </section>
         </main>
     </div>

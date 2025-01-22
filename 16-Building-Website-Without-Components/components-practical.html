@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بناء موقع بدون React Components | Building a Website Without React Components</title>
+    <title>Lesson Sixteen: Building Website Without Components | الدرس السادس عشر: بناء موقع بدون مكونات</title>
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
         .lesson-title {
@@ -49,6 +49,46 @@
         .command-line:last-child {
             margin-bottom: 0;
         }
+        
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -67,7 +107,10 @@
         </nav>
 
         <main class="content">
-            <h1 class="lesson-title">بناء موقع بدون Components</h1>
+            <div class="lesson-title">
+                <h1>Lesson Sixteen: Building Website Without Components</h1>
+                <h2>الدرس السادس عشر: بناء موقع بدون مكونات</h2>
+            </div>
             
             <section id="intro" class="section">
                 <div class="highlight">
@@ -157,39 +200,49 @@
                     <p>سنقوم بكتابة كل الأجزاء في ملف main.jsx:</p>
                     <p>We'll write all parts in main.jsx file:</p>
                     <div class="code-block" dir="ltr">
-                        <pre><code>import React from 'react';
-import { createRoot } from 'react-dom/client';
+                        <pre><code>
+<span class="arabic-comment">// الكود بدون استخدام المكونات</span>
+const app = (
+    &lt;div&gt;
+        &lt;header&gt;
+            &lt;h1&gt;<span class="arabic-content">موقعي</span>&lt;/h1&gt;
+            &lt;nav&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;<span class="arabic-content">الرئيسية</span>&lt;/li&gt;
+                    &lt;li&gt;<span class="arabic-content">المنتجات</span>&lt;/li&gt;
+                    &lt;li&gt;<span class="arabic-content">من نحن</span>&lt;/li&gt;
+                    &lt;li&gt;<span class="arabic-content">اتصل بنا</span>&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
 
-// إنشاء جذر التطبيق | Create root element
-createRoot(document.getElementById('root')).render(
-  &lt;div className="parent">
-    {/* Header */}
-    &lt;header>
-      &lt;h1>Welcome to my website&lt;/h1>
-    &lt;/header>
+        &lt;main&gt;
+            &lt;section&gt;
+                &lt;h2&gt;<span class="arabic-content">منتجاتنا</span>&lt;/h2&gt;
+                &lt;div className="products"&gt;
+                    &lt;div className="product"&gt;
+                        &lt;h3&gt;<span class="arabic-content">منتج 1</span>&lt;/h3&gt;
+                        &lt;p&gt;<span class="arabic-content">وصف المنتج الأول</span>&lt;/p&gt;
+                        &lt;button&gt;<span class="arabic-content">اشتري الآن</span>&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;div className="product"&gt;
+                        &lt;h3&gt;<span class="arabic-content">منتج 2</span>&lt;/h3&gt;
+                        &lt;p&gt;<span class="arabic-content">وصف المنتج الثاني</span>&lt;/p&gt;
+                        &lt;button&gt;<span class="arabic-content">اشتري الآن</span>&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+        &lt;/main&gt;
 
-    {/* Main Content */}
-    &lt;main className="main-content">
-      &lt;h2>Main Content&lt;/h2>
-      &lt;p>This is the main content area of our website.&lt;/p>
-    &lt;/main>
+        &lt;footer&gt;
+            <span class="arabic-content">جميع الحقوق محفوظة © 2025</span>
+        &lt;/footer&gt;
+    &lt;/div&gt;
+);
 
-    {/* Sidebar */}
-    &lt;aside className="sidebar">
-      &lt;h3>Navigation&lt;/h3>
-      &lt;ul>
-        &lt;li>&lt;a href="#">Link 1&lt;/a>&lt;/li>
-        &lt;li>&lt;a href="#">Link 2&lt;/a>&lt;/li>
-        &lt;li>&lt;a href="#">Link 3&lt;/a>&lt;/li>
-      &lt;/ul>
-    &lt;/aside>
-
-    {/* Footer */}
-    &lt;footer>
-      &lt;p> 2024 My Website. All rights reserved.&lt;/p>
-    &lt;/footer>
-  &lt;/div>
-);</code></pre>
+<span class="arabic-comment">// عرض التطبيق</span>
+ReactDOM.render(app, document.getElementById('root'));
+                        </code></pre>
                     </div>
                     
                     <div class="note">

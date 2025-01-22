@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Twenty-Five: Introduction to States | الدرس الخامس والعشرون: مقدمة في States</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
+            <h2>المحتويات</h2>
+            <ul>
+                <li><a href="#intro" class="nav-link">مقدمة عن States</a></li>
+                <li><a href="#states-vs-variables" class="nav-link">States مقابل Variables</a></li>
+                <li><a href="#example" class="nav-link">مثال عملي</a></li>
+                <li><a href="#declaring-states" class="nav-link">تعريف States</a></li>
+                <li><a href="#using-states" class="nav-link">استخدام States</a></li>
+                <li><a href="#best-practices" class="nav-link">أفضل الممارسات</a></li>
+                <li><a href="#summary" class="nav-link">ملخص الدرس</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <div class="lesson-title">
+                <h1>Lesson Twenty-Five: Introduction to States</h1>
+                <h2>الدرس الخامس والعشرون: مقدمة في States</h2>
+            </div>
+
+            <section id="intro" class="section">
+                <div class="highlight">
+                    <p>بسم الله الرحمن الرحيم</p>
+                    <p>في هذا الدرس، سنتعرف على مفهوم الـ States في React وكيفية استخدامها لتخزين وإدارة البيانات في مكونات React.</p>
+                    <p>In this lesson, we'll learn about React States and how to use them to store and manage data in React components.</p>
+                </div>
+            </section>
+
+            <section id="states-vs-variables" class="section">
+                <h2>States مقابل Variables | States vs Variables</h2>
+                <div class="highlight">
+                    <p>الـ States في React تشبه المتغيرات (Variables) في الدوال العادية. كلاهما يستخدم لتخزين البيانات، لكن الـ States لها ميزات خاصة في React.</p>
+                    <p>States in React are similar to variables in regular functions. Both are used to store data, but States have special features in React.</p>
+                    
+                    <h3>مثال على المتغيرات العادية | Example with Regular Variables:</h3>
+                    <pre><code>function checkAge(age) {
+    const ageLimit = 18; // متغير عادي | Regular variable
+    
+    if (age >= ageLimit) {
+        return "Age is greater than " + ageLimit;
+    }
+    return "Age is less than " + ageLimit;
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="example" class="section">
+                <h2>مثال عملي | Practical Example</h2>
+                <div class="highlight">
+                    <p>لنرى مثالاً على استخدام الـ State في مكون React:</p>
+                    <pre><code>class UserProfile extends React.Component {
+    state = {
+        nameUpperCase: this.props.name.toUpperCase()
+    }
+
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;h2&gt;{this.props.name}&lt;/h2&gt;
+                &lt;p&gt;Your first letter is: {this.state.nameUpperCase.charAt(0)}&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="declaring-states" class="section">
+                <h2>تعريف States | Declaring States</h2>
+                <div class="highlight">
+                    <p>يتم تعريف الـ State كحقل عام (public field) في مكون الـ Class:</p>
+                    <p>State is declared as a public field in the Class component:</p>
+                    <pre><code>class MyComponent extends React.Component {
+    state = {
+        // تعريف المتغيرات هنا | Define variables here
+        count: 0,
+        name: 'Ahmed',
+        isActive: true
+    }
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="using-states" class="section">
+                <h2>استخدام States | Using States</h2>
+                <div class="highlight">
+                    <p>للوصول إلى قيم الـ State، نستخدم this.state:</p>
+                    <p>To access State values, we use this.state:</p>
+                    <pre><code>render() {
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Count: {this.state.count}&lt;/p&gt;
+            &lt;p&gt;Name: {this.state.name}&lt;/p&gt;
+            &lt;p&gt;Status: {this.state.isActive ? 'Active' : 'Inactive'}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="best-practices" class="section">
+                <h2>أفضل الممارسات | Best Practices</h2>
+                <div class="highlight">
+                    <ul>
+                        <li>استخدم State لتخزين البيانات المتغيرة | Use State for data that changes</li>
+                        <li>تجنب تكرار الكود باستخدام State | Avoid code duplication using State</li>
+                        <li>اجعل أسماء State واضحة ومعبرة | Use clear and descriptive State names</li>
+                        <li>لا تخزن بيانات يمكن حسابها من props أو state أخرى | Don't store data that can be computed from props or other state</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="summary" class="section">
+                <h2>الملخص | Summary</h2>
+                <div class="highlight">
+                    <p>الـ States في React هي طريقة قوية لتخزين وإدارة البيانات في مكوناتك. فهي تشبه المتغيرات العادية ولكن مع ميزات إضافية خاصة بـ React.</p>
+                    <p>States in React are a powerful way to store and manage data in your components. They are similar to regular variables but come with special React features.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../shared/navigation.js"></script>
+</body>
+</html>

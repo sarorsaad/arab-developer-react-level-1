@@ -3,23 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Fiber Part 2 | React Fiber الجزء الثاني من</title>
+    <title>Lesson Five: React Fiber Part 2 | الدرس الخامس: React Fiber الجزء الثاني</title>
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
-        .home-link {
-            display: block;
-            background-color: #2196f3;
+        /* Base styles */
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
             color: white;
-            text-align: center;
-            padding: 12px;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            margin: 1rem;
+            margin-bottom: 20px;
+            text-align: center;
             font-weight: bold;
         }
-        .home-link:hover {
-            background-color: #1976d2;
+        .home-button:hover {
+            background-color: #0077cc;
         }
+        
+        /* Enhanced code block styles */
+        code {
+            direction: ltr;
+            display: block;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            white-space: pre;
+            overflow-x: auto;
+            color: #333;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+            margin: 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 0;
+        }
+
+        .code-example {
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        /* RTL support */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+            color: #6a737d;
+            margin-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            color: #032f62;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Syntax highlighting */
+        .keyword { color: #d73a49; }
+        .string { color: #032f62; }
+        .comment { color: #6a737d; }
+        .function { color: #6f42c1; }
+        .tag { color: #22863a; }
+        .variable { color: #e36209; }
+        .operator { color: #005cc5; }
+        .number { color: #005cc5; }
     </style>
 </head>
 <body>
@@ -34,14 +98,19 @@
                 <li><a href="#phases" class="nav-link">مراحل العمل (Work Phases)</a></li>
                 <li><a href="#scheduler" class="nav-link">المجدول (Scheduler)</a></li>
                 <li><a href="#examples" class="nav-link">أمثلة عملية (Practical Examples)</a></li>
+                <li><a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a></li>
+                <li><a href="#original-text" class="nav-link">النص الأصلي | Original Text</a></li>
             </ul>
         </nav>
 
         <main class="content">
+            <div class="lesson-title">
+                <h1>Lesson Five: React Fiber Part 2</h1>
+                <h2>الدرس الخامس: React Fiber الجزء الثاني</h2>
+            </div>
             <section id="async-rendering" class="section">
-                <h1>مميزات React Fiber (React Fiber Advantages)</h1>
+                <h2>العرض غير المتزامن (Asynchronous Rendering)</h2>
                 <div class="highlight">
-                    <h2>العرض غير المتزامن (Asynchronous Rendering)</h2>
                     <p>
                         يتيح React Fiber إمكانية العرض غير المتزامن (Asynchronous Rendering)، مما يعني:
                     </p>
@@ -120,29 +189,72 @@
             <section id="examples" class="section">
                 <h2>أمثلة عملية (Practical Examples)</h2>
                 <div class="code-example">
-                    <pre>
-// مثال على التحديثات ذات الأولوية العالية
-// High Priority Updates Example
-const UserInput = () => {
-    const handleInput = (e) => {
-        // تحديث فوري - أولوية عالية
-        // Immediate update - high priority
-        setInputValue(e.target.value);
+                    <pre><code>
+<span class="arabic-comment">// مثال على تحديث متزامن (قبل Fiber)</span>
+<span class="keyword">function</span> <span class="function">App</span>() {
+    <span class="keyword">const</span> [<span class="variable">count</span>, <span class="function">setCount</span>] = <span class="variable">React</span>.<span class="function">useState</span>(<span class="number">0</span>);
+    
+    <span class="keyword">const</span> <span class="function">handleClick</span> = () => {
+        <span class="arabic-comment">// سيتم تنفيذ هذا التحديث بشكل متزامن</span>
+        <span class="function">setCount</span>(<span class="variable">count</span> + <span class="number">1</span>);
+        <span class="variable">console</span>.<span class="function">log</span>(<span class="string">'<span class="arabic-content">تم التحديث</span>'</span>);
     };
     
-    return <input onChange={handleInput} />;
-};
+    <span class="keyword">return</span> (
+        &lt;<span class="tag">div</span>&gt;
+            &lt;<span class="tag">h1</span>&gt;<span class="arabic-content">العداد:</span> {<span class="variable">count</span>}&lt;/<span class="tag">h1</span>&gt;
+            &lt;<span class="tag">button</span> <span class="variable">onClick</span>={<span class="variable">handleClick</span>}&gt;
+                <span class="arabic-content">زيادة</span>
+            &lt;/<span class="tag">button</span>&gt;
+        &lt;/<span class="tag">div</span>&gt;
+    );
+}</code></pre>
 
-// مثال على التحديثات ذات الأولوية المنخفضة
-// Low Priority Updates Example
-const BackgroundTask = () => {
-    useEffect(() => {
-        // تحديث خلفي - أولوية منخفضة
-        // Background update - low priority
-        fetchData().then(data => {
-            setBackgroundData(data);
-        });
-    }, []);</pre>
+                    <pre><code>
+<span class="arabic-comment">// مثال على تحديث غير متزامن (مع Fiber)</span>
+<span class="keyword">function</span> <span class="function">App</span>() {
+    <span class="keyword">const</span> [<span class="variable">items</span>, <span class="function">setItems</span>] = <span class="variable">React</span>.<span class="function">useState</span>([]);
+    
+    <span class="keyword">const</span> <span class="function">addItem</span> = () => {
+        <span class="arabic-comment">// سيتم تقسيم التحديث إلى أجزاء صغيرة</span>
+        <span class="function">setItems</span>(<span class="variable">prevItems</span> => [
+            ...<span class="variable">prevItems</span>,
+            { <span class="variable">id</span>: <span class="variable">Date</span>.<span class="function">now</span>(), <span class="variable">text</span>: <span class="string">'<span class="arabic-content">عنصر جديد</span>'</span> }
+        ]);
+    };
+    
+    <span class="keyword">return</span> (
+        &lt;<span class="tag">div</span>&gt;
+            &lt;<span class="tag">h1</span>&gt;<span class="arabic-content">قائمة العناصر</span>&lt;/<span class="tag">h1</span>&gt;
+            &lt;<span class="tag">button</span> <span class="variable">onClick</span>={<span class="variable">addItem</span>}&gt;
+                <span class="arabic-content">إضافة عنصر</span>
+            &lt;/<span class="tag">button</span>&gt;
+            &lt;<span class="tag">ul</span>&gt;
+                {<span class="variable">items</span>.<span class="function">map</span>(<span class="variable">item</span> => (
+                    &lt;<span class="tag">li</span> <span class="variable">key</span>={<span class="variable">item</span>.<span class="variable">id</span>}&gt;{<span class="variable">item</span>.<span class="variable">text</span>}&lt;/<span class="tag">li</span>&gt;
+                ))}
+            &lt;/<span class="tag">ul</span>&gt;
+        &lt;/<span class="tag">div</span>&gt;
+    );
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=Tn2XAqrMhK4" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/675539944116934455/05-react-fiber-part-2-what-is-react-fiber-and-its-advantages-or-shrh-myzat-react-fiber" target="_blank">النص الأصلي | Original Text</a></p>
                 </div>
             </section>
         </main>

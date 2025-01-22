@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Introduction | مقدمة عن React</title>
+    <title>Lesson One: React Tutorial for Beginners - Introduction | الدرس الأول: مقدمة في React للمبتدئين</title>
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
         .home-link {
@@ -20,21 +20,68 @@
         .home-link:hover {
             background-color: #1976d2;
         }
+        
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <nav class="sidebar">
-            <a href="../index.html" class="home-link">الصفحة الرئيسية</a>
+            <a href="../index.html" class="home-button">الصفحة الرئيسية</a>
             <h2>المحتويات</h2>
             <a href="#introduction" class="nav-link">مقدمة عن React</a>
             <a href="#what-is-react" class="nav-link">ما هو React؟</a>
             <a href="#library-vs-framework" class="nav-link">الفرق بين Library و Framework</a>
             <a href="#why-react" class="nav-link">لماذا نتعلم React؟</a>
             <a href="#prerequisites" class="nav-link">المتطلبات الأساسية</a>
+            <a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a>
+            <a href="#original-text" class="nav-link">النص الأصلي | Original Text</a>
         </nav>
 
         <main class="content">
+            <div class="lesson-title">
+                <h1>Lesson One: React Tutorial for Beginners</h1>
+                <h2>الدرس الأول: مقدمة في React للمبتدئين</h2>
+            </div>
+
             <section id="introduction" class="section">
                 <h1>React Introduction | مقدمة عن React</h1>
                 <p>السلام عليكم، اليوم سنتحدث عن React وأهميته كـ Front-end Developer ولماذا يجب عليك تعلمه.</p>
@@ -82,6 +129,89 @@
                         <li>Node.js - فهم أساسي لـ Node.js</li>
                     </ul>
                 </div>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://youtu.be/HGPeeRWviN4" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/675539944116878293/01-react-tutorial-for-beginners-introduction-or-mqdmh-an-react" target="_blank">النص الأصلي | Original Text</a></p>
+                </div>
+            </section>
+
+            <section id="code-examples" class="section">
+                <h2>أمثلة على أكواد React</h2>
+                <pre><code>
+<span class="arabic-comment">// مثال بسيط على مكون React</span>
+function Welcome() {
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;<span class="arabic-content">مرحباً بكم في React</span>&lt;/h1&gt;
+            &lt;p&gt;<span class="arabic-content">هذا هو أول تطبيق React الخاص بنا</span>&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}
+                </code></pre>
+                <pre><code>
+<span class="arabic-comment">// مثال على استخدام المكونات</span>
+function App() {
+    return (
+        &lt;div&gt;
+            &lt;Welcome /&gt;
+            &lt;div className="content"&gt;
+                &lt;h2&gt;<span class="arabic-content">محتوى التطبيق</span>&lt;/h2&gt;
+                &lt;p&gt;<span class="arabic-content">هنا يمكنك إضافة المزيد من المكونات</span>&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+}
+                </code></pre>
+                <pre><code>
+<span class="arabic-comment">// مثال على استخدام الخصائص (Props)</span>
+function Greeting({ name }) {
+    return (
+        &lt;h1&gt;<span class="arabic-content">مرحباً يا</span> {name}!&lt;/h1&gt;
+    );
+}
+
+function App() {
+    return (
+        &lt;div&gt;
+            &lt;Greeting name="<span class="arabic-content">أحمد</span>" /&gt;
+            &lt;Greeting name="<span class="arabic-content">محمد</span>" /&gt;
+            &lt;Greeting name="<span class="arabic-content">سارة</span>" /&gt;
+        &lt;/div&gt;
+    );
+}
+                </code></pre>
+                <pre><code>
+<span class="arabic-comment">// مثال على استخدام الحالة (State)</span>
+function Counter() {
+    const [count, setCount] = React.useState(0);
+    
+    return (
+        &lt;div&gt;
+            &lt;h2&gt;<span class="arabic-content">العداد:</span> {count}&lt;/h2&gt;
+            &lt;button onClick={() => setCount(count + 1)}&gt;
+                <span class="arabic-content">زيادة</span>
+            &lt;/button&gt;
+            &lt;button onClick={() => setCount(count - 1)}&gt;
+                <span class="arabic-content">نقصان</span>
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+                </code></pre>
             </section>
         </main>
     </div>

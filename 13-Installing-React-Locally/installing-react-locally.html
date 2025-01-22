@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Installing React Locally: CRA & Vite | تثبيت React باستخدام CRA و Vite</title>
+    <title>Lesson Thirteen: Installing React Locally | الدرس الثالث عشر: تثبيت React محلياً</title>
     <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .home-button {
+            display: inline-block;
+            background-color: #0095ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #0077cc;
+        }
+        
+        code {
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Add styles for Arabic comments in code */
+        .arabic-comment {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Add styles for Arabic text content within code */
+        .arabic-content {
+            direction: rtl;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -16,11 +57,16 @@
             <a href="#cra-method" class="nav-link">Create React App (CRA)</a>
             <a href="#vite-method" class="nav-link">Vite Method</a>
             <a href="#comparison" class="nav-link">المقارنة بين الطريقتين</a>
+            <a href="#original-video" class="nav-link">الفيديو الأصلي | Original Video</a>
+            <a href="#original-text" class="nav-link">النص الأصلي | Original Text</a>
         </nav>
 
         <main class="content">
             <section id="introduction" class="section">
-                <h1>Installing React Locally: CRA & Vite | تثبيت React باستخدام CRA و Vite</h1>
+                <div class="lesson-title">
+                    <h1>Lesson Thirteen: Installing React Locally</h1>
+                    <h2>الدرس الثالث عشر: تثبيت React محلياً</h2>
+                </div>
                 <div class="highlight">
                     <p>
                         في هذا الدرس سنتعلم كيفية تثبيت React محلياً باستخدام طريقتين: Create React App و Vite.
@@ -89,17 +135,16 @@ npm start</code></pre>
             <section id="vite-method" class="section">
                 <h2>Vite Method | إنشاء تطبيق React باستخدام Vite</h2>
                 <div class="code-block">
-                    <pre><code># Using npm
-npm create vite@latest
+                    <pre><code><span class="arabic-comment">// تثبيت React محلياً</span>
+npm create vite@latest my-react-app -- --template react
 
-# Follow the prompts:
-# 1. Project name: my-app
-# 2. Select framework: React
-# 3. Select variant: JavaScript
+<span class="arabic-comment">// الدخول إلى مجلد المشروع</span>
+cd my-react-app
 
-# Navigate to project & install dependencies
-cd my-app
+<span class="arabic-comment">// تثبيت المكتبات المطلوبة</span>
 npm install
+
+<span class="arabic-comment">// تشغيل المشروع</span>
 npm run dev</code></pre>
                 </div>
                 <div class="note">
@@ -155,6 +200,24 @@ npm run dev</code></pre>
                         </td>
                     </tr>
                 </table>
+            </section>
+
+            <section id="original-video" class="section">
+                <h2>الفيديو الأصلي | Original Video</h2>
+                <div class="highlight">
+                    <p>يمكنك مشاهدة الفيديو الأصلي للدرس على يوتيوب من خلال الرابط التالي:</p>
+                    <p>You can watch the original video lesson on YouTube through the following link:</p>
+                    <p><a href="https://www.youtube.com/watch?v=4xjWqUGC5Ko" target="_blank">شاهد الفيديو | Watch Video</a></p>
+                </div>
+            </section>
+
+            <section id="original-text" class="section">
+                <h2>النص الأصلي | Original Text</h2>
+                <div class="highlight">
+                    <p>يمكنك الاطلاع على النص الأصلي للدرس باللغة العربية من خلال الرابط التالي:</p>
+                    <p>You can view the original Arabic text of this lesson through the following link:</p>
+                    <p><a href="https://turboscribe.ai/transcript/774619135920730440/13-how-to-install-react-locally-using-cra-and-vite-or-tthbyt-react-bastkhdam-cra-w-vite" target="_blank">النص الأصلي | Original Text</a></p>
+                </div>
             </section>
         </main>
     </div>
